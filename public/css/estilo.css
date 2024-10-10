@@ -37,3 +37,7 @@ html, body {
 	color: rgb(255, 255, 255);
 	text-decoration: none;
 }
+
+.navbar {
+	background-color: #A80532 !important;
+}
