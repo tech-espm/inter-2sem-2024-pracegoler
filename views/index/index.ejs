@@ -1,26 +1,33 @@
 ﻿<style>
+
 	.vermelho{
 		color: red;
 	}
 	.titulo{
-		max-width: 250px;
+		max-width: 200px;
+		max-height: 150px;
 		text-align: center;
+		padding: 0px 350px 0px;
+	}
+	.barra-pesquisa{
+		max-width: 500px;
+		margin: 10px;
 	}
 	
 </style>
 
-<div class="container-fluid">
-
-	<label>
+<div class="barra-pesquisa">
+	<label for="pesquisar">
 		Pesquisar
 	</label>
-
-	<h1 class="titulo">
-		<b> Acessibilidade em cada <span class="vermelho">página</span> </b>
-	</h1>
-
-	<p>
-		Upload do PDF para a conversão
-	</p>
-
+	<input id="resultadoPesquisar" type="text" />
 </div>
+
+<h1 class="titulo">
+	<b> Acessibilidade em cada <span class="vermelho">página</span></b>
+</h1>
+
+<p>
+	Upload do PDF para a conversão
+</p>
+
