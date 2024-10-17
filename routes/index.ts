@@ -21,6 +21,14 @@ class IndexRoute {
 		res.render("index/empresa", opcoes);
 	}
 
+	public async orientacoes(req: app.Request, res: app.Response) {
+		let opcoes = {
+			titulo: "Orientações"
+		};
+
+		res.render("index/orientacoes", opcoes);
+	}
+
 	public async produtos(req: app.Request, res: app.Response) {
 		let produtoA = {
 			id: 1,
