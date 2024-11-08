@@ -4,6 +4,7 @@ img {
 
 body{
 	background-color: antiquewhite;
+	font-family: 'Roboto';
 }
 
 html, body {
@@ -40,4 +41,12 @@ html, body {
 
 .navbar {
 	background-color: #A80532 !important;
+}
+
+.img-carousel {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	height: 50vh;
+	min-height: 300px;
 }

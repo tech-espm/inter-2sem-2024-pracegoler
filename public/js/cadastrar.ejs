@@ -1,0 +1,305 @@
+<style>
+  h1 {
+		color: #568C03;
+		font-size: 55px;
+	}
+
+	h2 {
+		font-weight: bold;
+		font-size: 25px
+	}
+
+	p {
+		font-size: 15px;
+	}
+
+	img {
+		border-radius: 15px;
+		max-width: 100%;
+	}
+
+  .centralizar {
+    text-align: center;
+  }
+
+  .fundo-bege {
+    background-color: #f8efe5;
+    min-height: 998px;
+  }
+
+	.coluna-padding-top {
+		padding-top: 45px;
+	}
+
+  .padding-bottom-texto {
+    padding-bottom: 40px;
+  }
+
+  .padding-top-botao {
+    padding-top: 25px;
+  }
+
+  .img-fundo-coluna {
+    background-image: url(/public/img/cadastro.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    margin-top: 35px;
+  }
+
+  .padding-left-texto {
+    padding-left: 35px;
+  }
+
+  .padding-top-logo {
+    padding-top: 80px;
+  }
+
+  .padding-right-texto {
+    padding-right: 42px;
+  }
+
+</style>
+<div class="fundo-bege">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10 offset-md-1 coluna-padding-top padding-left-texto padding-right-texto">
+        <h2 class="centralizar padding-left-texto">Junte-se a nós</h2>
+        <div class="centralizar pt-3 padding-left-texto">
+          <img src="/public/img/logo_oficial.svg" alt="Logo FarmerLink" width="150px">
+        </div>
+        <div class="mb-2 padding-left-texto pt-3">
+          <label for="inputNomeCompleto" class="form-label"
+            >Nome completo</label
+          >
+          <input
+            type="text"
+            id="inputNomeCompleto"
+            class="form-control"
+            maxlength="50"
+          />
+        </div>
+        <div class="mt-3 padding-left-texto">
+          <label for="inputEmail" class="form-label">E-mail</label>
+          <input
+            type="text"
+            id="inputEmail"
+            class="form-control"
+            maxlength="50"
+          />
+        </div>
+        <div class="mt-3 padding-left-texto">
+          <label for="inputTelefone" class="form-label">Telefone</label>
+          <input
+            type="tel"
+            id="inputTelefone"
+            class="form-control"
+          />
+        </div>
+        <div class="mt-3 padding-left-texto">
+          <label for="inputCPF" class="form-label">CPF</label>
+          <input
+            type="text"
+            id="inputCPF"
+            class="form-control"
+          />
+        </div>
+        <div class="mt-3 padding-left-texto">
+          <label for="inputDataDeNascimento" class="form-label"
+            >Data de nascimento</label
+          >
+          <input
+            type="date"
+            id="inputDataDeNascimento"
+            class="form-control"
+          />
+        </div>
+        <div class="mt-3 padding-left-texto">
+          <label for="inputCEP" class="form-label">CEP</label>
+          <input
+            type="text"
+            id="inputCEP"
+            class="form-control"
+          />
+        </div>
+        <div class="mt-3 padding-left-texto">
+          <label for="selectOpcoes" class="form-label">Tipo da conta</label>
+          <select id="selectOpcoes" class="form-select">
+            <option value="">Selecione...</option>
+            <option value="a">Cliente</option>
+            <option value="b">Fazendeiro</option>
+          </select>
+        </div>
+
+        <div class="mt-3 padding-left-texto">
+          <label class="form-label" for="catalogo">Catálogo</label>
+          <div id="catalogo"></div>
+        </div>
+      
+        <div class="d-grid padding-top-botao padding-left-texto">
+          <button
+            type="button"
+            onclick="efetuarCadastro()"
+            class="btn btn-primary buttonzinho"
+          >
+            Cadastrar
+          </button>
+        </div>
+        <p class="centralizar padding-left-texto padding-top-botao padding-bottom-texto">
+          Já tem uma conta?
+          <a href="/entrar">Entrar</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 offset-md-1 centralizar pt-3">
+      <p>
+        <img
+          src="/public/img/entrega_rapida.png"
+          width="50px"
+          alt="Ícone de caixa"
+        />
+        Entrega rápida
+      </p>
+    </div>
+    <div class="col-md-4 centralizar pt-3">
+      <p>
+        <img
+          src="/public/img/qualidade_garantida.png"
+          width="50px"
+          alt="Ícone sinal positivo"
+        />
+        Qualidade garantida
+      </p>
+    </div>
+    <div class="col-md-3 centralizar pt-3">
+      <p>
+        <img
+          src="/public/img/eco_friendly.png"
+          width="50px"
+          alt="Ícone folha"
+        />
+        Eco friendly
+      </p>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="/public/js/ckeditor/ckeditor.js"></script>
+
+<script>
+
+  CKEDITOR.replace("catalogo");
+
+  // CKEDITOR.instances.catalogo.getData()
+
+  const SPMaskBehavior = function (val) {
+    return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+  },
+  spOptions = {
+    onKeyPress: function(val, e, field, options) {
+      field.mask(SPMaskBehavior.apply({}, arguments), options);
+    }
+  };
+  $("#inputTelefone").mask(SPMaskBehavior, spOptions);
+  $("#inputCPF").mask("000.000.000-00", {reverse: true});
+  $("#inputCEP").mask("00000-000");
+
+  function efetuarCadastro() {
+    let inputNomeCompleto = document.getElementById("inputNomeCompleto");
+    let inputEmail = document.getElementById("inputEmail");
+    let inputTelefone = document.getElementById("inputTelefone");
+    let inputCPF = document.getElementById("inputCPF");
+    let inputDataDeNascimento = document.getElementById(
+      "inputDataDeNascimento"
+    );
+    let inputCEP = document.getElementById("inputCEP");
+
+    let nomeCompleto = inputNomeCompleto.value;
+    let email = inputEmail.value;
+    let telefone = inputTelefone.value;
+    let cpf = inputCPF.value;
+    let dataDeNascimento = inputDataDeNascimento.value;
+    let cep = inputCEP.value;
+
+    if (!nomeCompleto) {
+      console.log("Nome completo vazio!");
+      return;
+    } else {
+      console.log("Nome completo : " + nomeCompleto);
+    }
+
+    if (!email) {
+      console.log("E-mail vazio!");
+      return;
+    } else {
+      console.log("E-mail: " + email);
+    }
+
+    if (!telefone) {
+      console.log("Telefone vazio!");
+      return;
+    } else {
+      console.log("Telefone: " + telefone);
+    }
+
+    if (!dataDeNascimento) {
+      console.log("Data de nascimento vazia!");
+      return;
+    } else {
+      console.log("Data de nascimento: " + dataDeNascimento);
+    }
+
+    if (!cep) {
+      console.log("CEP vazio!");
+      return;
+    } else {
+      console.log("CEP: " + cep);
+    }
+  }
+
+  /*
+  const mascaraInputCPF = document.querySelector("#inputCPF");
+  mascaraInputCPF.addEventListener("keypress", () => {
+    let inputLengthCPF = mascaraInputCPF.value.length;
+
+    if (inputLengthCPF === 3 || inputLengthCPF === 7) {
+      mascaraInputCPF.value += ".";
+    }
+    if (inputLengthCPF === 11) {
+      mascaraInputCPF.value += "-";
+    }
+  });
+
+  const mascaraInputTelefone = document.querySelector("#inputTelefone");
+  mascaraInputTelefone.addEventListener("keypress", () => {
+    let inputLengthTelefone = mascaraInputTelefone.value.length;
+
+    if (inputLengthTelefone === 0) {
+      mascaraInputTelefone.value += "(";
+    }
+    if (inputLengthTelefone === 3) {
+      mascaraInputTelefone.value += ")";
+    }
+    if (inputLengthTelefone === 4) {
+      mascaraInputTelefone.value += " ";
+    }
+    if (inputLengthTelefone === 9) {
+      mascaraInputTelefone.value += "-";
+    }
+  });
+
+  const mascaraInputCEP = document.querySelector("#inputCEP");
+  mascaraInputCEP.addEventListener("keypress", () => {
+    let inputLengthCEP = mascaraInputCEP.value.length;
+
+    if (inputLengthCEP === 5) {
+      mascaraInputCEP.value += "-";
+    }
+  });
+  */
+</script>
