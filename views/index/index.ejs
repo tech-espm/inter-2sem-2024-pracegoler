@@ -1,4 +1,12 @@
 ﻿<style>
+	.espaco{
+		padding: 20px 80px 20px 80px;
+	}
+	.texto{
+		display: grid;
+		justify-content: center;
+		text-align: center;
+	}
 	.titulo{
 		font-size: 60px;
 		max-width: 500px;
@@ -10,33 +18,28 @@
 		max-width: 500px;
 		margin: 10px auto;
 	}
-	.botao{
-		background-color: rgb(152, 9, 9);
-		border-radius: 30px;
-		max-width: 120px;
-	}
-	.link{
-		text-decoration: none;
-		color: aliceblue;
-		font-weight: 500;
-	}
-	.image{
-		width: 100%;
-		max-width: 80px;
+	.barra{
+		border-radius: 5px;
+		border-color: rgb(250, 246, 241);
+		width: 300px; 
+		height: 40px;
 	}
 </style>
 
-<div class="container-fluid">
-	<div class="barra-pesquisa">
-		<label for="pesquisar">
-			Pesquisar
-		</label>
-		<input id="resultadoPesquisar" type="text" />
-	</div>
+<div class="container-fluid espaco">
+	<div class="texto">
+		<div class="barra-pesquisa">
+			<input class="barra" id="resultadoPesquisar" type="text" placeholder="Pesquisar os audiobooks" />
+		</div>
+	
+		<h1 class="titulo">
+			<b> Acessibilidade em cada <span class="vermelho">página</span>!</b>
+		</h1>
 
-	<h1 class="titulo">
-		<b> Acessibilidade em cada <span class="vermelho">página</span>!</b>
-	</h1>
+		<p>
+			Insira abaixo seu texto a ser imprimido.
+		</p>
+	</div>
 
 	<div id="obra"></div>
 </div>
