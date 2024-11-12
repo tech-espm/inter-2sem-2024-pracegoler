@@ -10,6 +10,15 @@
         font-family: 'Roboto', sans-serif;
         margin-left: 0px;
     }
+    .cell-orientacoes {
+        padding: 20px;
+        min-height: 100%;
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
     .button {
         text-decoration: none;
         color: #fff;
@@ -19,6 +28,10 @@
     }
     .button:hover {
         background-color: rgba(168, 5, 50, 0.85)
+    }
+    img {
+        max-width: 100%;
+        border-radius: 40px;
     }
 </style>
 
@@ -31,16 +44,22 @@
     <h1>Saiba mais sobre screen-readers</h1>
     <div class="row">
         <div class="col-sm-4">
-            <img src="/public/img/jaws.webp" alt="Logo do screen-reader JAWS">
-            <a class="button" href="https://www.freedomscientific.com/products/software/jaws/" target="_blank">Adquirir JAWS</a>
+            <div class="cell-orientacoes">
+                <img src="/public/img/jaws.webp" alt="Logo do screen-reader JAWS">
+                <a class="button" href="https://www.freedomscientific.com/products/software/jaws/" target="_blank">Adquirir JAWS</a>
+            </div>
         </div>
         <div class="col-sm-4">
-            <img src="/public/img/nvda.png" alt="Logo do screen-reader NVDA">
-            <a class="button" href="https://www.nvaccess.org/download/" target="_blank">Adquirir NVDA</a>
+            <div class="cell-orientacoes">
+                <img src="/public/img/nvda.png" alt="Logo do screen-reader NVDA">
+                <a class="button" href="https://www.nvaccess.org/download/" target="_blank">Adquirir NVDA</a>
+            </div>
         </div>
         <div class="col-sm-4">
-            <img src="/public/img/voiceover.png" alt="Logo do screen-reader voice over">
-            <a class="button" href="https://www.apple.com/voiceover/info/guide/_1121.html#:~:text=VoiceOver%20is%20a%20built%2Din,VoiceOver%2C%20press%20Command%2DF5." target="_blank">Adquirir Voice Over</a>
+            <div class="cell-orientacoes">
+                <img src="/public/img/voiceover.png" alt="Logo do screen-reader voice over">
+                <a class="button" href="https://www.apple.com/voiceover/info/guide/_1121.html#:~:text=VoiceOver%20is%20a%20built%2Din,VoiceOver%2C%20press%20Command%2DF5." target="_blank">Adquirir Voice Over</a>
+            </div>
         </div>
     </div>
 </div>
