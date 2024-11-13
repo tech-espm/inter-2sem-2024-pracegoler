@@ -1,0 +1,136 @@
+<style>
+    .alto-contraste {
+        padding: 10px;
+        border: none;
+        background-color: #000;
+        border-radius: 10px;
+        color: white;
+    }
+    
+    .google-button,
+    .outlook-button {
+        width: 48%;
+        font-size: 0.9rem;
+    }
+    
+    form label {
+        color: #a0a0a0;
+    }
+    
+    form .form-control {
+        border-color: #ddd;
+        color: #333;
+    }
+    
+    form .form-control::placeholder {
+        color: #a0a0a0;
+    }
+    .box2{
+        padding-top: 200px;
+    
+    }
+    
+    html, body {
+        height: 100vh;
+        margin: 0;
+        overflow: hidden; 
+    }
+    
+    .container-fluid {
+        height: 100%;
+    }
+    
+    .row {
+        height: 100%; 
+    }
+    
+    .col-md-6 {
+        height: 100%; 
+    }
+    
+    .btn-contraste{
+        display: flex;
+        justify-content: end;
+        margin-right: 10px;
+    }
+    
+    .google-button{
+        background-color: transparent;
+        padding: 12px;
+        color: #a0a0a0;
+        border: 1px solid #a0a0a0;
+        border-radius: 10px;
+    }
+    
+    .google-button:hover{
+        background-color: #a0a0a0;
+        color: white;
+        transition: 1s;
+    }
+    
+    .submit-btn{
+        background-color: #A80532;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+        width: 300px;
+        margin-top: 10px;
+    }
+    
+    .submit-btn:hover{
+        background-color: #99465d;
+        color: white;
+        transition: 0.5s;
+    }
+    .btn-sub{
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    
+</style>
+
+
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <img src="public/img/Livro.png" alt="" class="img-fluid">
+        </div>
+        <div class="col-md-6 box2">
+            <div class="btn-contraste">
+                <button class="alto-contraste mb-3 d-flex align-items-center ">
+                    <img src="/icon-contraste.svg" alt="" class="me-2"> Alto Contraste
+                </button>
+            </div>
+            <h1 class="mb-4">Criar Conta</h1>
+            <div class="d-flex justify-content-between mb-3">
+                <button class="d-flex align-items-center google-button">
+                    <img src="google-icon-logo-svgrepo-com.svg" alt="" class="me-2"> Usando Conta do Google
+                </button>
+                <button class="d-flex align-items-center google-button">
+                    <img src="outlook-svgrepo-com.svg" alt="" class="me-2"> Usando Conta do Outlook
+                </button>
+            </div>
+            <h2 class="text-center text-muted my-3">- ou -</h2>
+            <form action="">
+                <div class="mb-3">
+                    <label for="nomeCompleto" class="form-label">Nome Completo</label>
+                    <input type="text" class="form-control" id="nomeCompleto"
+                        placeholder="Digite seu nome completo">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Digite seu email">
+                </div>
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" class="form-control" id="senha" placeholder="Crie uma senha">
+                </div>
+                <div class="btn-sub">
+                    <button type="submit" class="submit-btn">Criar Conta</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
