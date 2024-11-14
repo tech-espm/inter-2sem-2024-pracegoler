@@ -4,18 +4,21 @@
     <a href="https://www.espm.br/cursos-de-graduacao/sistemas-de-informacao/"><img src="https://raw.githubusercontent.com/tech-espm/misc-template/main/logo.png" alt="Sistemas de Informação ESPM" style="width: 375px;"/></a>
 </p>
 
-# [Nome do Projeto] (por exemplo, Sistema de Gerenciamento da ESPM Júnior)
+# PraCegoLer
 
 ### 2024-02
 
 ## Integrantes
-- [Nome do integrante 1 e link do portifólio](https://github.com/tech-espm/)
-- [Nome do integrante 2 e link do portifólio](https://github.com/tech-espm/)
-- [Nome do integrante 3 e link do portifólio](https://github.com/tech-espm/)
+- Bianca Cristine Fagundes de Araújo (https://github.com/araujozb)
+- Gabriel Cardoso Campos Rodrigues (https://github.com/gabrielccr-555)
+- Gustavo Dutra Telles (https://github.com/snowdutra)
+- Luzivania de Jesus Bonfim
+- Maria Gabriela Vieira dos Santos (https://github.com/mgabriel4)
+- Mateus Carnevale Colmeal (https://github.com/colmeal)
 
 ## Descrição do Projeto
 
-Descrição do projeto, incluindo o problema original, e o objetivo final. Pode ser em mais de um parágrafo.
+Nosso projeto, intitulado “PRACEGOLER”, possui como objetivo principal ampliar as oportunidades de inserção no ensino superior para pessoas cegas através da tradução de obras acadêmicas para braille, promovendo assim maior acessibilidade e inclusão na educação. Sobre o funcionamento do site, na página inicial, o usuário pode fazer realizar a transcrição e baixá-las no formato de PDF para a impressão. A função de alto contraste está disponível para melhorar a navegação. O acesso completo ao site, inicialmente será restrito a alunos da ESPM, mediante login ou cadastro. A motivação do nosso projeto está estritamente ligada ao Objetivo de Desenvolvimento Sustentável 4: educação de qualidade, que visa garantir uma educação de qualidade e inclusiva para todos. Nosso projeto não foca na monetização, pois se trata de um projeto social sem arrecadação de fundos. A nossa divulgação será no intuito de captar mais alunos com deficiência visual para a ESPM. 
 
 # Detalhes de Configuração
 
