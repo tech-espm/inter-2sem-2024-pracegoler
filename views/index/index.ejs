@@ -41,6 +41,7 @@
 </style>
 
 <div class="container-fluid espaco">
+	
 	<div class="texto">
 		<div class="barra-pesquisa">
 			<input class="barra" id="resultadoPesquisar" type="text" placeholder="Pesquisar os audiobooks" />
@@ -49,17 +50,38 @@
 		<h1 class="titulo">
 			<b> Acessibilidade em cada <span class="vermelho">página</span>!</b>
 		</h1>
-
-		<p class="descricao">
-			Insira abaixo seu texto a ser imprimido.
-		</p>
 	</div>
+	
+	<div>
+		<label for="inputNome"> Insira o título da obra: </label>
+		<input id="inputNome" type="text">
+	</div>
+
+	<div>
+		<label for="inputNome"> Insira o nome do autor: </label>
+		<input id="inputNome" type="text">
+	</div>
+	
+	<div>
+		<label for="inputNome"> Insira o nome da editora: </label>
+		<input id="inputNome" type="text">
+	</div>
+
+	<div>
+		<label for="inputNome"> Insira o ano da obra: </label>
+		<input id="inputNome" type="text">
+	</div>
+
+	<p class="descricao">
+		Insira abaixo seu texto a ser imprimido.
+	</p>
 
 	<div id="obra"></div>
 
 	<div id="obra_traduzida"></div>
 
-	<button class="btn btn-dark red" onclick=""> Imprimir</button>
+	<button type="button" class="btn btn-dark" onclick=""></button>
+
 </div>
 
 <script type="text/javascript" src="/public/js/ckeditor/ckeditor.js"></script>
