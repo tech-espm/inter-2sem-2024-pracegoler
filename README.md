@@ -12,7 +12,7 @@
 - Bianca Cristine Fagundes de Araújo (https://github.com/araujozb)
 - Gabriel Cardoso Campos Rodrigues (https://github.com/gabrielccr-555)
 - Gustavo Dutra Telles (https://github.com/snowdutra)
-- Luzivania de Jesus Bonfim
+- Luzivania de Jesus Bonfim (https://github.com/bonfim1) 
 - Maria Gabriela Vieira dos Santos (https://github.com/mgabriel4)
 - Mateus Carnevale Colmeal (https://github.com/colmeal)
 
