@@ -75,6 +75,26 @@ class IndexRoute {
 			return;
 		}
 
+		if (!obra.nome) {
+			res.status(400).json("Título inválido");
+			return;
+		}
+
+		if (!obra.autor) {
+			res.status(400).json("Autor inválido");
+			return;
+		}
+
+		if (!obra.editora) {
+			res.status(400).json("Editora inválida");
+			return;
+		}
+
+		if (!obra.ano) {
+			res.status(400).json("Ano inválido");
+			return;
+		}
+
 		await app.sql.connect(async (sql) => {
 			await sql.query("insert into obra (titulo, prefacio, editora, autor, ano, conteudo) values (?, ?, ?, ?, ?, ?)", [obra.titulo, obra.prefacio, obra.editora, obra.autor, obra.ano, obra.conteudo]);
 		});
