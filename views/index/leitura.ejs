@@ -1,0 +1,101 @@
+<script type="text/javascript">
+	document.body.classList.add("A4");
+</script>
+
+<div class="d-print-none bg-white text-right p-2 mb-3 shadow" style="position: fixed; left: 0; top: 0; width: 100%; z-index: 1;">
+	<button type="button" class="btn btn-sm btn-primary" onclick="window.print()">Imprimir</button>
+	<button type="button" class="btn btn-sm btn-secondary" onclick="alternarFonte()">Alternar Fonte</button>
+</div>
+
+<div class="d-print-none p-2 mb-3">
+	<button type="button" class="btn btn-sm btn-primary invisible">Imprimir</button>
+</div>
+
+<div class="sheet height-auto" id="pagina"><%- obra.conteudo %></div>
+
+<%- contentFor("espaco-head") %>
+
+<link rel="stylesheet" type="text/css" href="/public/css/paper.css-0.3.1/paper.css" />
+
+<style type="text/css">
+	@font-face {
+		font-family: 'Braille Normal';
+		font-style: normal;
+		font-weight: 400;
+		font-display: swap;
+		src: url('/public/fonts/braille1.ttf') format('truetype');
+	}
+
+	/* https://developer.mozilla.org/en-US/docs/Web/CSS/@page */
+	@page {
+		margin: 20mm;
+		size: A4 portrait;
+	}
+
+	.sheet {
+		font-size: 4.5mm;
+	}
+
+	.height-auto {
+		height: auto !important;
+	}
+
+	img {
+		display: block;
+		margin: 0 auto;
+		max-width: 100%;
+	}
+
+	p {
+		margin-bottom: 4.5mm;
+	}
+
+	h1 {
+		font-size: 8mm;
+		font-weight: bold;
+		margin-bottom: 8mm;
+	}
+
+	h2 {
+		font-size: 5.5mm;
+		font-weight: bold;
+		margin-bottom: 5.5mm;
+	}
+
+	.evitar-quebra-interna {
+		page-break-inside: avoid;
+	}
+
+	.braille {
+		font-family: 'Braille Normal';
+	}
+
+	.sheet {
+		padding: 20mm;
+	}
+
+	@media print {
+		body {
+			background-color: #fff;
+		}
+
+		.sheet {
+			padding: 0mm;
+		}
+	}
+
+</style>
+
+<script>
+	function alternarFonte() {
+		let pagina = document.getElementById("pagina");
+
+		pagina.classList.toggle("braille");
+
+		//if (pagina.classList.contains("braille")) {
+		//	pagina.classList.remove("braille");
+		//} else {
+		//	pagina.classList.add("braille");
+		//}
+	}
+</script>

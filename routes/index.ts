@@ -37,7 +37,7 @@ class IndexRoute {
 		res.render("index/login", opcoes);
 	}
 
-	public async produtos(req: app.Request, res: app.Response) {
+	public async acervo(req: app.Request, res: app.Response) {
 		let produtoA = {
 			id: 1,
 			nome: "Produto A",
@@ -59,11 +59,46 @@ class IndexRoute {
 		let produtosVindosDoBanco = [ produtoA, produtoB, produtoC ];
 
 		let opcoes = {
-			titulo: "Listagem de Produtos",
+			titulo: "Acervo",
 			produtos: produtosVindosDoBanco
 		};
 
-		res.render("index/produtos", opcoes);
+		res.render("index/acervo", opcoes);
+	}
+
+	@app.http.post()
+	public async criarObra(req: app.Request, res: app.Response) {
+		let obra = req.body;
+
+		if (!obra.titulo) {
+			res.status(400).json("Título inválido");
+			return;
+		}
+
+		await app.sql.connect(async (sql) => {
+			await sql.query("insert into obra (titulo, prefacio, editora, autor, ano, conteudo) values (?, ?, ?, ?, ?, ?)", [obra.titulo, obra.prefacio, obra.editora, obra.autor, obra.ano, obra.conteudo]);
+		});
+
+		res.json(true);
+	}
+
+	public async leitura(req: app.Request, res: app.Response) {
+		let id = parseInt(req.query["id"] as string);
+
+		let obra;
+
+		await app.sql.connect(async (sql) => {
+			let lista = await sql.query("select id, titulo, prefacio, editora, autor, ano, conteudo from obra where id = ?", [id]);
+			obra = lista[0];
+		});
+
+		let opcoes = {
+			layout: "layout-simples",
+			titulo: "Leitura",
+			obra: obra
+		};
+
+		res.render("index/leitura", opcoes);
 	}
 }
 

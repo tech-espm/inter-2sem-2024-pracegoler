@@ -26,31 +26,12 @@ Para funcionar corretamente, devem ser criados os seguintes arquivos/pastas nos 
 
 - O arquivo `.env` deve ser criado em `/`, com o conteúdo abaixo:
 ```
-app_localIp=0.0.0.0
-app_port=3000
-app_root=
-# Não pode terminar com barra /
-app_urlSite=http://localhost:3000
-app_cookie=[NOME DO COOKIE]
-app_cookieSecure=0
-app_staticFilesDir=public
-app_disableStaticFiles=0
-app_sqlConfig_connectionLimit=30
-app_sqlConfig_waitForConnections=1
-app_sqlConfig_charset=utf8mb4
-app_sqlConfig_host=localhost
-app_sqlConfig_port=3306
-app_sqlConfig_user=[USUÁRIO DO BANCO]
-app_sqlConfig_password=[SENHA DO USUÁRIO DO BANCO]
-app_sqlConfig_database=[NOME DO BANCO]
-app_usuarioSenhaPadrao=[SENHA PADRÃO PARA NOVOS USUÁRIOS]
-app_usuarioHashSenhaPadrao=[HASH DA SENHA PADRÃO PARA NOVOS USUÁRIOS]
-# Não utilizar números > 0x7FFFFFFF pois os XOR resultarão em -1
-app_usuarioHashId=[HASH DE 32 BITS PARA O ID EM HEXADECIMAL, COMO 0x1234ABCD]
+mysqlhost=localhost
+mysqlport=3306
+mysqluser=USUARIO
+mysqlpassword=SENHA
+mysqldatabase=pracegoler
 ```
-
-- A pasta `dados` deve ser criada em `/`
-- A pasta `imagens` dee ser criada em `/dados`
 
 # Licença
 

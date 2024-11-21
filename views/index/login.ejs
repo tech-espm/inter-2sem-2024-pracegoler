@@ -98,17 +98,12 @@
             <img src="public/img/Livro.png" alt="" class="img-fluid">
         </div>
         <div class="col-md-6 box2">
-            <div class="btn-contraste">
-                <button class="alto-contraste mb-3 d-flex align-items-center ">
-                    <img src="/icon-contraste.svg" alt="" class="me-2"> Alto Contraste
-                </button>
-            </div>
             <h1 class="mb-4">Criar Conta</h1>
             <div class="d-flex justify-content-between mb-3">
-                <button class="d-flex align-items-center google-button">
+                <button type="button" class="d-flex align-items-center google-button">
                     <img src="google-icon-logo-svgrepo-com.svg" alt="" class="me-2"> Usando Conta do Google
                 </button>
-                <button class="d-flex align-items-center google-button">
+                <button type="button" class="d-flex align-items-center google-button">
                     <img src="outlook-svgrepo-com.svg" alt="" class="me-2"> Usando Conta do Outlook
                 </button>
             </div>
@@ -128,9 +123,15 @@
                     <input type="password" class="form-control" id="senha" placeholder="Crie uma senha">
                 </div>
                 <div class="btn-sub">
-                    <button type="submit" class="submit-btn">Criar Conta</button>
+                    <button type="button" class="submit-btn" onclick="exibirMensagem()">Criar Conta</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+	function exibirMensagem() {
+		Swal.fire("Em breve...", "Aguarde... 😅", "info");
+	}
+</script>
