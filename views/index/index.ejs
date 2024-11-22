@@ -7,10 +7,14 @@
 		display: grid;
 		justify-content: center;
 		text-align: center;
+		margin: 0px 50px 50px 50px;
+	}
+	.imagem{
+		max-width: 150px;
 	}
 	.titulo{
 		font-size: 60px;
-		max-width: 500px;
+		text-align: start;
 	}
 	.vermelho{
 		color: #c20e35;
@@ -20,10 +24,8 @@
 		margin: 10px auto;
 	}
 	.barra{
-		border-radius: 5px;
-		border-color: rgb(250, 246, 241);
-		width: 300px; 
-		height: 40px;
+		border-radius: 8px;
+		width: 500px; 
 	}
 	.descricao{
 		border-radius: 10px;
@@ -37,50 +39,78 @@
 		border-color: #c20e35;
 		margin: 30px 10px;
 	}
-
+	.form-label{
+		font-weight: lighter;
+		font-style: italic;
+	}
+	.botao{
+		margin: 25px auto;
+	}
+	.espaco-interno{
+		padding: 30px;
+	}
 </style>
 
 <div class="container-fluid espaco">
 	
 	<div class="texto">
-		<div class="barra-pesquisa">
-			<input class="barra" id="resultadoPesquisar" type="text" placeholder="Pesquisar os audiobooks" />
+		<div class="mb-3 barra-pesquisa">
+			<input type="text" class="form-control barra" id="exampleFormControlInput1" placeholder="Pesquisar audiobooks">
 		</div>
-	
-		<h1 class="titulo">
-			<b> Acessibilidade em cada <span class="vermelho">página</span>!</b>
-		</h1>
-	</div>
-	
-	<div>
-		<label for="inputNome"> Insira o título da obra: </label>
-		<input id="inputNome" type="text">
-	</div>
-
-	<div>
-		<label for="inputNome"> Insira o nome do autor: </label>
-		<input id="inputNome" type="text">
-	</div>
-	
-	<div>
-		<label for="inputNome"> Insira o nome da editora: </label>
-		<input id="inputNome" type="text">
+		<div class="row">
+			<div class="col-md-6 espaco-interno">
+				<h1 class="titulo">
+					<b> Acessibilidade em cada <span class="vermelho">página</span>!</b>
+				</h1>		
+			</div>
+			<div class="col-md-6 espaco-interno">
+				<img class="imagem" src="public/img/e-book.png" alt="Computador e um livro a frente">	
+			</div>
+		</div>
 	</div>
 
-	<div>
-		<label for="inputNome"> Insira o ano da obra: </label>
-		<input id="inputNome" type="text">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="mb-3">
+				<label for="exampleFormControlInput1" class="form-label"> Título da obra: </label>
+				<input type="text" class="form-control" id="exampleFormControlInput1">
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="mb-3">
+				<label for="exampleFormControlInput1" class="form-label"> Autor da obra: </label>
+				<input type="text" class="form-control" id="exampleFormControlInput1">
+			</div>
+		</div>
 	</div>
-
+	<div class="row">
+		<div class="col-md-6">
+			<div class="mb-3">
+				<label for="exampleFormControlInput1" class="form-label"> Ano de publicação da obra: </label>
+				<input type="number" class="form-control" id="exampleFormControlInput1">
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="mb-3">
+				<label for="exampleFormControlInput1" class="form-label"> Editora da obra: </label>
+				<input type="text" class="form-control" id="exampleFormControlInput1">
+			</div>
+		</div>
+	</div>
+	<div class="mb-3">
+		<label for="exampleFormControlTextarea1" class="form-label">Prefácio da obra:</label>
+		<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+	  </div>
+	
 	<p class="descricao">
-		Insira abaixo seu texto a ser imprimido.
+		Insira abaixo seu texto a ser transcrito.
 	</p>
 
 	<div id="obra"></div>
 
 	<div id="obra_traduzida"></div>
 
-	<button type="button" class="btn btn-dark" onclick=""></button>
+	<button type="button" class="btn btn-dark botao" onclick="//--criação do fetch"> Modo de leitura</button>
 
 </div>
 
@@ -90,4 +120,6 @@
   CKEDITOR.replace("obra");
 
   // CKEDITOR.instances.obra.getData()
+
+  fetch("/criarObra")
 </script>
