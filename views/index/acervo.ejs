@@ -1,77 +1,54 @@
-<style>
-	.titulo{
-		margin: 20px;
-		text-align: center;
-		font-weight: bold;
-	}
-	.desc-titulo{
-		text-align: center;
-		margin: auto;
-	}
-	.slide{
-		padding: 20px 60px;
-	}
-	.img{
-		width: 100%;
-		max-width: 200px;
-	}
-	.active{
-		text-align: center;
-	}
 </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1 class="titulo">Minha biblioteca</h1>
+        <p class="desc-titulo">Os livros que estão no seu acervo pessoal, você encontra aqui!</p>
 
+        <div id="carouselExampleCaptions" class="carousel slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="img-carousel" style="background-image: url(public/img/fundamentos.jpg);"></div>
+                </div>
+                <div class="carousel-item">
+                    <div class="img-carousel" style="background-image: url(public/img/fundamentos-economia.png);"></div>
+                </div>
+                <div class="carousel-item">
+                    <div class="img-carousel" style="background-image: url(public/img/engsoftware.png);"></div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
 
-<div class="container-fluid">
+        <p>Listagem de produtos (<%= produtos.length %> produtos no total)</p>
 
-	<h1 class="titulo">Minha biblioteca</h1>
-	<p class="desc-titulo"> Os livros que estão no seu acervo pessoal, você encontra aqui!</p>
-
-	<div id="carouselExampleCaptions" class="carousel slide">
-		<div class="carousel-indicators">
-		  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-		  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-		  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-		</div>
-		<div class="carousel-inner">
-		  <div class="carousel-item active">
-			<div class="img-carousel" style="background-image: url(public/img/fundamentos.jpg);"></div>
-		  </div>
-		  <div class="carousel-item">
-			<div class="img-carousel" style="background-image: url(public/img/fundamentos-economia.png);"></div>
-		  </div>
-		  <div class="carousel-item">
-			<div class="img-carousel" style="background-image: url(public/img/engsoftware.png);"></div>
-		  </div>
-		</div>
-		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-		  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		  <span class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-		  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-		  <span class="visually-hidden">Next</span>
-		</button>
-	  </div>
-	
-	<p>Listagem de produtos (<%= produtos.length %> produtos no total)</p>
-
-	<% for (let contador = 0; contador < produtos.length; contador++) { %>
-
-		<h2>
-			<%= produtos[contador].nome %>
-		</h2>
-
-		<p>
-			Id: <%= produtos[contador].id %>
-		</p>
-
-		<p>
-			Valor: R$ <%= produtos[contador].valor %>
-		</p>
-
-		<hr />
-
-	<% } %>
-	
-
-</div>
+        <% for (let contador = 0; contador < produtos.length; contador++) { %>
+            <h2>
+                <%= produtos[contador].nome %>
+            </h2>
+            <p>
+                Id: <%= produtos[contador].id %>
+            </p>
+            <p>
+                Valor: R$ <%= produtos[contador].valor %>
+            </p>
+            <h3>Ouça o áudio do produto</h3>
+            <audio controls>
+                <source src="caminho-do-arquivo-<%= produtos[contador].id %>.mp3" type="audio/mpeg">
+                Seu navegador não suporta o elemento de áudio.
+            </audio>
+            <hr />
+        <% } %>
+    </div>
