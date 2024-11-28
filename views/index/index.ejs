@@ -13,19 +13,16 @@
 		max-width: 150px;
 	}
 	.titulo{
-		font-size: 60px;
+		font-size: 55px;
 		text-align: start;
 	}
 	.vermelho{
 		color: #c20e35;
 	}
-	.barra-pesquisa{
-		max-width: 500px;
-		margin: 10px auto;
-	}
 	.barra{
 		border-radius: 8px;
 		width: 500px; 
+		margin: 10px auto;
 	}
 	.descricao{
 		border-radius: 10px;
@@ -34,37 +31,39 @@
 		padding: 10px;
 		margin: 5px auto 20px;
 	}
-	.red{
-		background-color: #c20e35;
-		border-color: #c20e35;
-		margin: 30px 10px;
-	}
 	.form-label{
 		font-weight: lighter;
 		font-style: italic;
 	}
 	.botao{
 		margin: 25px auto;
+		background-color: #c20e35;
+		border-color: #c20e35;
 	}
 	.espaco-interno{
-		padding: 30px;
+		background-image: url(public/img/e-book.png);
+		background-repeat: no-repeat;
+		background-size:contain;
+		height: 100%;
+	}
+	.titulo-dois{
+		font-size: 18px;
 	}
 </style>
 
 <div class="container-fluid espaco">
 	
 	<div class="texto">
-		<div class="mb-3 barra-pesquisa">
+		<div class="mb-3 barra">
 			<input type="text" class="form-control barra" id="exampleFormControlInput1" placeholder="Pesquisar audiobooks">
 		</div>
 		<div class="row">
-			<div class="col-md-6 espaco-interno">
+			<div class="col-md-6 espaco-titulo">
 				<h1 class="titulo">
 					<b> Acessibilidade em cada <span class="vermelho">página</span>!</b>
 				</h1>		
 			</div>
 			<div class="col-md-6 espaco-interno">
-				<img class="imagem" src="public/img/e-book.png" alt="Computador e um livro a frente">	
 			</div>
 		</div>
 	</div>
@@ -72,13 +71,13 @@
 	<div class="row">
 		<div class="col-md-6">
 			<div class="mb-3">
-				<label for="exampleFormControlInput1" class="form-label"> Título da obra: </label>
+				<h2 class="titulo-dois"><label for="exampleFormControlInput1" class="form-label"> Título da obra: </label></h2>
 				<input type="text" class="form-control" id="exampleFormControlInput1">
 			</div>
 		</div>
 		<div class="col-md-6">
 			<div class="mb-3">
-				<label for="exampleFormControlInput1" class="form-label"> Autor da obra: </label>
+				<h2 class="titulo-dois"><label for="exampleFormControlInput1" class="form-label"> Autor da obra: </label></h2>
 				<input type="text" class="form-control" id="exampleFormControlInput1">
 			</div>
 		</div>
@@ -86,24 +85,24 @@
 	<div class="row">
 		<div class="col-md-6">
 			<div class="mb-3">
-				<label for="exampleFormControlInput1" class="form-label"> Ano de publicação da obra: </label>
+				<h2 class="titulo-dois"><label for="exampleFormControlInput1" class="form-label"> Ano de publicação da obra: </label></h2>
 				<input type="number" class="form-control" id="exampleFormControlInput1">
 			</div>
 		</div>
 		<div class="col-md-6">
 			<div class="mb-3">
-				<label for="exampleFormControlInput1" class="form-label"> Editora da obra: </label>
+				<h2 class="titulo-dois"><label for="exampleFormControlInput1" class="form-label"> Editora da obra: </label></h2>
 				<input type="text" class="form-control" id="exampleFormControlInput1">
 			</div>
 		</div>
 	</div>
 	<div class="mb-3">
-		<label for="exampleFormControlTextarea1" class="form-label">Prefácio da obra:</label>
+		<h2 class="titulo-dois"><label for="exampleFormControlTextarea1" class="form-label">Prefácio da obra:</label></h2>
 		<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 	  </div>
 	
 	<p class="descricao">
-		Insira abaixo seu texto a ser transcrito.
+		Insira abaixo seu texto.
 	</p>
 
 	<div id="obra"></div>

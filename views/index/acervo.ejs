@@ -1,7 +1,18 @@
+<style>
+    .espaco{
+        padding: 20px;
+        text-align: center;
+    }
+    .lista{
+        text-align: left;
+    }
+    .slide{
+        margin: 20px;
+    }
 </style>
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid espaco">
         <h1 class="titulo">Minha biblioteca</h1>
         <p class="desc-titulo">Os livros que estão no seu acervo pessoal, você encontra aqui!</p>
 
@@ -32,7 +43,8 @@
             </button>
         </div>
 
-        <p>Listagem de produtos (<%= produtos.length %> produtos no total)</p>
+        <div class="lista">
+            <p>Listagem de produtos (<%= produtos.length %> produtos no total)</p>
 
         <% for (let contador = 0; contador < produtos.length; contador++) { %>
             <h2>
@@ -51,4 +63,5 @@
             </audio>
             <hr />
         <% } %>
+        </div>
     </div>
