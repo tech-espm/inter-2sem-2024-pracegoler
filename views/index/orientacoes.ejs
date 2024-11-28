@@ -1,5 +1,41 @@
 <style>
-    h1 {
+    .impressao {
+        margin-top: 50px;
+        margin-left: 10px;
+    }
+    .impressao-h2 {
+        padding: 10px;
+        display: inline-block;
+        background-color: #A80532;
+        border-radius: 20px;
+        color: white;
+        margin-bottom: 20px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    }
+    .cell-impressao {
+        width: 100%;
+        max-width: 700px;
+        padding: 15px;
+        background-color: #BD8184;
+        border-radius: 20px;
+        position: relative;
+    }
+    .button-solicitar {
+        text-decoration: none;
+        color: #000;
+        background-color: #DAA14C;
+        border-radius: 15px;
+        padding: 7px 20px;
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    /* h1 {
         margin: 0%;
         padding: 15px;
         font-weight: 600;
@@ -35,34 +71,30 @@
     img {
         max-width: 100%;
         border-radius: 20px;
-    }
+    } */
 </style>
 
-<div class="container-fluid orientacoes">
-    <div class="impressao">
-        <h1>Licença para impressão de conteúdo</h1>
-        <a class="button" href="https://www.google.com.br/" target="_blank">Veja como solicitar</a>
+<div class="container-fluid impressao">
+    <div class="impressao-h2">
+        <h2>Licenças para impressão</h2>
     </div>
-
-    <h1>Saiba mais sobre screen-readers</h1>
     <div class="row">
-        <div class="col-sm-4">
-            <div class="cell-orientacoes">
-                <img src="/public/img/jaws.webp" alt="Logo do screen-reader JAWS">
-                <a class="button" href="https://www.freedomscientific.com/products/software/jaws/" target="_blank">Adquirir JAWS</a>
+        <div class="col-sm-6">
+            <div class="cell-impressao">
+                <h3>Sobre as licenças</h3>
+                <p>Caso você precise realizar a impressão de materiais protegidos por direitos autorais,
+                    a biblioteca oferece uma licença especial para viabilizar o acesso a estes recursos.</p>
+                <h3>Quem pode solicitar?</h3>
+                <p>Esta licença está disponível para:</p>
+                <ul>
+                    <li>Estudantes ESPM</li>
+                    <li>Funcionários ESPM</li>
+                </ul>
+                <a class="button button-solicitar" href="https://www.google.com.br/" target="_blank">Veja como solicitar</a>
             </div>
         </div>
-        <div class="col-sm-4">
-            <div class="cell-orientacoes">
-                <img src="/public/img/nvda.png" alt="Logo do screen-reader NVDA">
-                <a class="button" href="https://www.nvaccess.org/download/" target="_blank">Adquirir NVDA</a>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="cell-orientacoes">
-                <img src="/public/img/voiceover.png" alt="Logo do screen-reader voice over">
-                <a class="button" href="https://www.apple.com/voiceover/info/guide/_1121.html#:~:text=VoiceOver%20is%20a%20built%2Din,VoiceOver%2C%20press%20Command%2DF5." target="_blank">Adquirir Voice Over</a>
-            </div>
+        <div class="col-sm-6">
+            <img src="/public/img/menina_pergunta.png" alt="menina em dúvida">
         </div>
     </div>
 </div>
