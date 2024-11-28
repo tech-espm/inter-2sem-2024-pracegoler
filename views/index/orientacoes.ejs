@@ -10,7 +10,6 @@
         border-radius: 20px;
         color: white;
         margin-bottom: 20px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
     }
     .cell-impressao {
         width: 100%;
@@ -19,16 +18,25 @@
         background-color: #BD8184;
         border-radius: 20px;
         position: relative;
+        box-shadow: 10px 10px 0px #A80532
     }
+
     .button-solicitar {
         text-decoration: none;
         color: #000;
         background-color: #DAA14C;
         border-radius: 15px;
         padding: 7px 20px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
         position: absolute;
         bottom: 15px;
         right: 15px;
+        cursor: pointer;
+        transition: all 0.4s ease;
+    }
+    .button-solicitar:hover {
+        background-color: #F8BB63;
+        transform: scale(1.05);
     }
 
     img {
