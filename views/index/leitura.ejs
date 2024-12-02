@@ -5,6 +5,7 @@
 <div class="d-print-none bg-white text-right p-2 mb-3 shadow" style="position: fixed; left: 0; top: 0; width: 100%; z-index: 1;">
 	<button type="button" class="btn btn-sm btn-primary" onclick="window.print()">Imprimir</button>
 	<button type="button" class="btn btn-sm btn-secondary" onclick="alternarFonte()">Alternar Fonte</button>
+	<button type="button" class="btn btn-sm btn-success" onclick="lerEmVozAlta()" id="buttonLer">Ler em Voz Alta</button>
 </div>
 
 <div class="d-print-none p-2 mb-3">
@@ -97,5 +98,9 @@
 		//} else {
 		//	pagina.classList.add("braille");
 		//}
+	}
+
+	function lerEmVozAlta() {
+		// https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#demo_2
 	}
 </script>

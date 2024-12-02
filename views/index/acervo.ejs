@@ -44,21 +44,18 @@
         </div>
 
         <div class="lista">
-            <p>Listagem de produtos (<%= produtos.length %> produtos no total)</p>
+            <p>Listagem de obras (<%= obras.length %> obras no total)</p>
 
-        <% for (let contador = 0; contador < produtos.length; contador++) { %>
+        <% for (let contador = 0; contador < obras.length; contador++) { %>
             <h2>
-                <%= produtos[contador].nome %>
+                <%= obras[contador].titulo %>
             </h2>
             <p>
-                Id: <%= produtos[contador].id %>
-            </p>
-            <p>
-                Valor: R$ <%= produtos[contador].valor %>
+                Id: <%= obras[contador].id %>
             </p>
             <h3>Ouça o áudio do produto</h3>
             <audio controls>
-                <source src="caminho-do-arquivo-<%= produtos[contador].id %>.mp3" type="audio/mpeg">
+                <source src="caminho-do-arquivo-<%= obras[contador].id %>.mp3" type="audio/mpeg">
                 Seu navegador não suporta o elemento de áudio.
             </audio>
             <hr />

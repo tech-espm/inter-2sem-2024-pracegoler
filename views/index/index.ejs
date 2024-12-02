@@ -1,27 +1,19 @@
 ﻿<style>
 	.espaco{
-		padding: 20px 80px 20px 80px;
+		padding: 20px 35px;
 		text-align: center;
-	}
-	.texto{
-		display: grid;
-		justify-content: center;
-		text-align: center;
-		margin: 0px 50px 50px 50px;
 	}
 	.imagem{
 		max-width: 150px;
 	}
 	.titulo{
-		font-size: 55px;
-		text-align: start;
+		font-size: 40px;
 	}
 	.vermelho{
 		color: #c20e35;
 	}
 	.barra{
 		border-radius: 8px;
-		width: 500px; 
 		margin: 10px auto;
 	}
 	.descricao{
@@ -40,85 +32,126 @@
 		background-color: #c20e35;
 		border-color: #c20e35;
 	}
-	.espaco-interno{
-		background-image: url(public/img/e-book.png);
-		background-repeat: no-repeat;
-		background-size:contain;
-		height: 100%;
-	}
 	.titulo-dois{
 		font-size: 18px;
+	}
+
+	@media (min-width: 576px) {
+		.titulo{
+			font-size: 55px;
+		}
 	}
 </style>
 
 <div class="container-fluid espaco">
 	
-	<div class="texto">
-		<div class="mb-3 barra">
-			<input type="text" class="form-control barra" id="exampleFormControlInput1" placeholder="Pesquisar audiobooks">
-		</div>
-		<div class="row">
-			<div class="col-md-6 espaco-titulo">
-				<h1 class="titulo">
-					<b> Acessibilidade em cada <span class="vermelho">página</span>!</b>
-				</h1>		
-			</div>
-			<div class="col-md-6 espaco-interno">
-			</div>
-		</div>
+	<!--
+	<div class="mb-3 barra">
+		<input type="text" class="form-control barra" id="exampleFormControlInput1" placeholder="Pesquisar audiobooks">
+	</div>
+	-->
+	<h1 class="titulo mb-4">
+		<b> Acessibilidade em cada <span class="vermelho">página</span>!</b>
+	</h1>
+	<div class="mb-3">
+		<img src="/public/img/e-book.png" width="200" />
 	</div>
 
 	<div class="row">
 		<div class="col-md-6">
 			<div class="mb-3">
-				<h2 class="titulo-dois"><label for="exampleFormControlInput1" class="form-label"> Título da obra: </label></h2>
-				<input type="text" class="form-control" id="exampleFormControlInput1">
+				<h2 class="titulo-dois"><label for="inputTitulo" class="form-label"> Título da obra: </label></h2>
+				<input type="text" class="form-control" id="inputTitulo">
 			</div>
 		</div>
 		<div class="col-md-6">
 			<div class="mb-3">
-				<h2 class="titulo-dois"><label for="exampleFormControlInput1" class="form-label"> Autor da obra: </label></h2>
-				<input type="text" class="form-control" id="exampleFormControlInput1">
+				<h2 class="titulo-dois"><label for="inputAutor" class="form-label"> Autor da obra: </label></h2>
+				<input type="text" class="form-control" id="inputAutor">
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-6">
 			<div class="mb-3">
-				<h2 class="titulo-dois"><label for="exampleFormControlInput1" class="form-label"> Ano de publicação da obra: </label></h2>
-				<input type="number" class="form-control" id="exampleFormControlInput1">
+				<h2 class="titulo-dois"><label for="inputAno" class="form-label"> Ano de publicação da obra: </label></h2>
+				<input type="number" class="form-control" id="inputAno">
 			</div>
 		</div>
 		<div class="col-md-6">
 			<div class="mb-3">
-				<h2 class="titulo-dois"><label for="exampleFormControlInput1" class="form-label"> Editora da obra: </label></h2>
-				<input type="text" class="form-control" id="exampleFormControlInput1">
+				<h2 class="titulo-dois"><label for="inputEditora" class="form-label"> Editora da obra: </label></h2>
+				<input type="text" class="form-control" id="inputEditora">
 			</div>
 		</div>
 	</div>
 	<div class="mb-3">
-		<h2 class="titulo-dois"><label for="exampleFormControlTextarea1" class="form-label">Prefácio da obra:</label></h2>
-		<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-	  </div>
-	
-	<p class="descricao">
-		Insira abaixo seu texto.
-	</p>
+		<h2 class="titulo-dois"><label for="inputPrefacio" class="form-label">Prefácio da obra:</label></h2>
+		<textarea class="form-control" id="inputPrefacio" rows="3"></textarea>
+	</div>
+
+	<h2 class="titulo-dois"><label for="obra" class="form-label">Conteúdo da obra:</label></h2>
 
 	<div id="obra"></div>
 
-	<div id="obra_traduzida"></div>
-
-	<button type="button" class="btn btn-dark botao" onclick="//--criação do fetch"> Modo de leitura</button>
+	<button type="button" class="btn btn-dark botao" onclick="criarObra()"> Criar Obra</button>
 
 </div>
 
 <script type="text/javascript" src="/public/js/ckeditor/ckeditor.js"></script>
 
 <script>
-  CKEDITOR.replace("obra");
+	CKEDITOR.replace("obra");
 
-  // CKEDITOR.instances.obra.getData()
+	async function criarObra() {
+		let inputTitulo = document.getElementById("inputTitulo");
+		let inputAutor = document.getElementById("inputAutor");
+		let inputAno = document.getElementById("inputAno");
+		let inputEditora = document.getElementById("inputEditora");
+		let inputPrefacio = document.getElementById("inputPrefacio");
 
-  fetch("/criarObra")
+		let titulo = inputTitulo.value;
+		let autor = inputAutor.value;
+		let ano = inputAno.value;
+		let editora = inputEditora.value;
+		let prefacio = inputPrefacio.value;
+		let conteudo = CKEDITOR.instances.obra.getData();
+
+		let obra = {
+			titulo: titulo,
+			autor: autor,
+			ano: ano,
+			editora: editora,
+			prefacio: prefacio,
+			conteudo: conteudo
+		};
+
+		try {
+			waitSwal();
+
+			let response = await fetch("/criarObra", {
+				method: "POST",
+				body: JSON.stringify(obra),
+				headers: {
+					"content-type": "application/json"
+				}
+			});
+
+			if (!response.ok) {
+				Swal.fire("Erro", "Ocorreu um erro ao criar a obra", "error");
+				return;
+			}
+
+			inputTitulo.value = "";
+			inputAutor.value = "";
+			inputAno.value = "";
+			inputEditora.value = "";
+			inputPrefacio.value = "";
+			CKEDITOR.instances.obra.setData("");
+
+			Swal.fire("Sucesso!", "Obra criada com sucesso!", "success");
+		} catch (ex) {
+			Swal.fire("Erro", "Ocorreu um erro de rede ao criar a obra: " + ex.message, "error");
+		}
+	}
 </script>

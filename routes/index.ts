@@ -38,29 +38,15 @@ class IndexRoute {
 	}
 
 	public async acervo(req: app.Request, res: app.Response) {
-		let produtoA = {
-			id: 1,
-			nome: "Produto A",
-			valor: 25
-		};
+		let obras: any[];
 
-		let produtoB = {
-			id: 2,
-			nome: "Produto B",
-			valor: 15
-		};
-
-		let produtoC = {
-			id: 3,
-			nome: "Produto C",
-			valor: 100
-		};
-
-		let produtosVindosDoBanco = [ produtoA, produtoB, produtoC ];
+		await app.sql.connect(async (sql) => {
+			obras = await sql.query("select id, titulo, prefacio, editora, autor, ano from obra order by titulo");
+		});
 
 		let opcoes = {
 			titulo: "Acervo",
-			produtos: produtosVindosDoBanco
+			obras: obras
 		};
 
 		res.render("index/acervo", opcoes);
@@ -71,11 +57,6 @@ class IndexRoute {
 		let obra = req.body;
 
 		if (!obra.titulo) {
-			res.status(400).json("Título inválido");
-			return;
-		}
-
-		if (!obra.nome) {
 			res.status(400).json("Título inválido");
 			return;
 		}
@@ -92,6 +73,16 @@ class IndexRoute {
 
 		if (!obra.ano) {
 			res.status(400).json("Ano inválido");
+			return;
+		}
+
+		if (!obra.prefacio) {
+			res.status(400).json("Prefácio inválido");
+			return;
+		}
+
+		if (!obra.conteudo) {
+			res.status(400).json("Conteúdo inválido");
 			return;
 		}
 
