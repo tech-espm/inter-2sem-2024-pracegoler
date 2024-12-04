@@ -55,13 +55,14 @@
     .screen-readers {
         padding: 40px 40px;
     }
-    .screen-readers-cell {
+    .screen-readers-all {
         background-color: #BD8184;
         width: 100%;
         /* max-width: 1150px; */
         padding: 15px;
         border-radius: 20px;
-        box-shadow: 10px 10px 0px #A80532
+        box-shadow: 10px 10px 0px #A80532;
+        
     }
     .screen-readers-h2 {
         padding: 10px;
@@ -70,6 +71,53 @@
         border-radius: 20px;
         color: black;
         margin-bottom: 20px;
+    }
+
+    .screen-readers-p1 {
+        font-weight: bold;
+    }
+    .screen-readers-p2 {
+        max-width: 500px;
+        padding-bottom: 15px;
+    }
+
+    .cell-screen-readers {
+        padding: 40px;
+        background-color: #A80532;
+        min-height: 400px;
+        max-width: 300px;
+        width: 100%;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .button-screen-readers {
+        text-decoration: none;
+        color: #000;
+        background-color: #DAA14C;
+        border-radius: 15px;
+        padding: 7px 20px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        position: absolute;
+        align-self: center;
+        bottom: 15px;
+        cursor: pointer;
+        transition: all 0.4s ease;
+    }
+    .button-screen-readers:hover {
+        background-color: #F8BB63;
+        transform: scale(1.05);
+    }
+
+    .img-sr {
+        max-width: 100%;
+        max-height: 150px;
+        border-radius: 20px;
     }
 
 </style>
@@ -99,14 +147,35 @@
 
 <div class="container-fluid screen-readers">
     <div class="row">
-        <div class="col-sm-6 screen-readers-cell">
+        <div class="col-sm-6 screen-readers-all">
             <div class="screen-readers-h2">
                 <h2>Screen-readers</h2>
             </div>
             <div class="screen-readers-p1">
                 <p>Sabemos que os screen readers são ferramentas essenciais para a navegação na web e para o uso de dispositivos digitais.</p>
             </div>
-            <p>Pensando nisso, reunimos aqui algumas das principais opções para facilitar o acesso e ajudar você a encontrar o que precisa.</p>
+            <div class="screen-readers-p2">
+                <p>Pensando nisso, reunimos aqui algumas das principais opções para facilitar o acesso e ajudar você a encontrar o que precisa.</p>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="cell-screen-readers">
+                        <img class="img-sr" src="/public/img/jaws.webp" alt="Logo do screen-reader JAWS">
+                        <a class="button button-screen-readers" href="https://www.freedomscientific.com/products/software/jaws/" target="_blank">Adquirir JAWS</a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="cell-screen-readers">
+                        <img class="img-sr" src="/public/img/nvda.png" alt="Logo do screen-reader NVDA">
+                        <a class="button button-screen-readers" href="https://www.nvaccess.org/download/" target="_blank">Adquirir NVDA</a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="cell-screen-readers">
+                        <img class="img-sr" src="/public/img/voiceover.png" alt="Logo do screen-reader voice over">
+                        <a class="button button-screen-readers" href="https://www.apple.com/voiceover/info/guide/_1121.html#:~:text=VoiceOver%20is%20a%20built%2Din,VoiceOver%2C%20press%20Command%2DF5." target="_blank">Adquirir Voice Over</a>
+                    </div>
+                </div>
         </div>
     </div>
     
