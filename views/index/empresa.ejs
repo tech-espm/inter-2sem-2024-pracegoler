@@ -1,6 +1,6 @@
 <style>
     .titulo{
-      margin: 0px 0px 40px 0px;
+      margin: 0px 0px 30px 0px;
     }
     .paragrafo{
       margin: 0px 0px 30px 0px;
@@ -10,14 +10,17 @@
     }
     .card-img-top{
       margin: 0 auto;
-      max-width: 100px;
+      padding: 5px;
+      max-width: 170px;
+      border-radius: 25px;
     }
     .espaco{
       padding: 40px;
       text-align: center;
     }
     .card-text{
-      text-align: left;
+      text-align: center;
+      margin: 10px;
     }
     .ods{
       margin: 15px auto;
@@ -30,21 +33,37 @@
       background-color: #c20e35;
       border-color: #c20e35;
     }
-
+    .margem{
+      margin: 10px;
+    }
+    .grafico{
+      max-width: 400px;
+      border-radius: 20px;
+      transition: all 2s;
+    }
+    .grafico:hover{
+      max-width: 430px;
+    }
+    .card-title{
+      text-decoration: underline;
+    }
+    .estatistica{
+      margin: 40px 0px 40px 0px;
+    }
 </style>
 
 <div class="container-fluid espaco">
     <h1 class="titulo">
         Sobre o projeto
     </h1>
-    <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="row row-cols-1 row-cols-md-2 g-4 margem">
         <div class="col">
           <div class="card">
-            <img src="public/img/objetivos.jpg" class="card-img-top" alt="Imagem mostrando um arco de objetivo.">
+            <img src="public/img/motivação.png" class="card-img-top" alt="Imagem demonstrando o sentimento de motivação.">
             <div class="card-body">
-                <h4 class="card-title">Objetivo</h4>
+                <h4 class="card-title"> Motivação </h4>
                 <p class="card-text">
-                  O projeto visa ampliar as oportunidades de acesso ao ensino superior para pessoas cegas. Nosso site oferece suporte na transcrição de obras acadêmicas para braille e disponibiliza audiobooks, promovendo acessibilidade e inclusão. Essa iniciativa busca facilitar a educação de quem mais precisa, contribuindo para uma sociedade mais justa e equitativa.
+                  O PraCegoLer nasceu com o propósito de enfrentar a significativa barreira de acessibilidade à leitura no Brasil. Atualmente, apenas 1% a 2% dos livros disponíveis são transcritos para braille, o que limita profundamente o acesso ao conhecimento para pessoas com deficiência visual. Essa realidade impacta diretamente mais de 1,19 milhões de brasileiros com deficiência visual (IBGE, 2019), restringindo suas oportunidades educacionais e profissionais. 
                 </p>
             </div>
           </div>
@@ -61,14 +80,66 @@
           </div>
         </div>
     </div>
+    
+    <div class="row row-cols-1 row-cols-md-2 g-4 margem">
+        <div class="col">
+          <div class="card">
+            <img src="public/img/objetivos.jpg" class="card-img-top" alt="Imagem mostrando um arco de objetivo.">
+            <div class="card-body">
+                <h4 class="card-title"> Objetivo </h4>
+                <p class="card-text">
+                  O objetivo do projeto é promover a inclusão e acessibilidade na educação, especialmente para pessoas cegas, ampliando suas oportunidades de acesso ao ensino superior. Isso é alcançado por meio da transcrição de obras acadêmicas para braille e da oferta 
+                </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="public/img/ods.png" class="card-img-top" alt="Logo do Objetivo de Desenvolvimento Sustentável 4.">
+            <div class="card-body">
+                <h4 class="card-title"> Objetivo de Desenvolvimento Sustentável </h4>
+                <p class="card-text">
+                  A ODS 4 visa garantir educação inclusiva, equitativa e de qualidade para todos. O projeto de tradução de obras acadêmicas para braille alinha-se a esse objetivo ao ampliar o acesso de estudantes cegos ao ensino superior, oferecendo materiais iguais aos de outros alunos. Com foco em acessibilidade e inclusão, a iniciativa reduz desigualdades educacionais e contribui para tornar a educação verdadeiramente universal, apoiando diretamente as metas da ODS 4.
+                </p>
+            </div>
+          </div>
+        </div>
+    </div>
 
-    <div class="card ods">
-      <img src="public/img/ods.png" class="card-img-top" alt="Logo da ODS">
-      <div class="card-body">
-        <h3 class="card-title"> ODS - Objetivos de Desenvolvimento Sustentável</h3>
-        <p class="card-text">
-          A ODS 4 visa garantir educação inclusiva, equitativa e de qualidade para todos. O projeto de tradução de obras acadêmicas para braille alinha-se a esse objetivo ao ampliar o acesso de estudantes cegos ao ensino superior, oferecendo materiais iguais aos de outros alunos. Com foco em acessibilidade e inclusão, a iniciativa reduz desigualdades educacionais e contribui para tornar a educação verdadeiramente universal, apoiando diretamente as metas da ODS 4.
-        </p>
+    <div class="estatistica">
+      <h2 class="titulo"> Análise de Dados </h2>
+      <p>
+      </p>
+      <div class="container-fluid">
+        <div class="row margem">
+          <div class="col-md-6">
+            <h3>Explicação do gráfico</h3>
+            <p>Das pessoas que leem muitos livros, 54% também leem muitos artigos. Já entre as pessoas que leem poucos livros, 78% também leem poucos artigos.
+              Hipótese:“Pessoas que se interessam por livros, também se interessam por artigos."
+              Isso sugere que há uma conexão entre o interesse por livros e artigos, indicando que quem gosta de um tipo de leitura tende a gostar do outro.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <img class="grafico" src="public/img/bidimensional1.jpg">
+          </div>
+        </div>
+      </div>
+      <div class="row margem">
+        <div class="col-md-6">
+          <img class="grafico" src="public/img/q7.png">
+        </div>
+        <div class="col-md-6">
+          <h3>Explicação do gráfico</h3>
+          <p>
+            O gráfico de barras apresenta os resultados da pergunta "O quão você considera que é importante ter um ambiente acessível no meio acadêmico?". Ele está dividido em três categorias representadas por barras coloridas:
+
+            Azul (não visível ou mínimo valor): Menos de 10% das respostas.
+            Vermelho: 8% das respostas consideram acessibilidade de importância média.
+            Amarelo: 10% das respostas indicam uma importância alta, mas não máxima.
+            Verde: 82% das respostas indicam que acessibilidade é considerada de extrema importância no meio acadêmico.
+            O gráfico mostra claramente que a maioria absoluta dos respondentes valoriza muito a acessibilidade no ambiente acadêmico.
+          </p>
+        </div>
       </div>
     </div>
 
