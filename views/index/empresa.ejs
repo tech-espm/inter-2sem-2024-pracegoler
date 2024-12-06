@@ -32,17 +32,18 @@
     .red{
       background-color: #c20e35;
       border-color: #c20e35;
+      transition: all 5ms;
+    }
+    .red:hover{
+      background-color: #454142;
+      border-color: #454142;
     }
     .margem{
       margin: 10px;
     }
     .grafico{
-      max-width: 400px;
+      max-width: 450px;
       border-radius: 20px;
-      transition: all 2s;
-    }
-    .grafico:hover{
-      max-width: 430px;
     }
     .card-title{
       text-decoration: underline;
@@ -50,6 +51,31 @@
     .estatistica{
       margin: 40px 0px 40px 0px;
     }
+    .vermelho{
+      color: #c20e35;
+    }
+    .azul{
+      color: blue;
+    }
+    .amarelo{
+      color: rgb(203, 203, 2);
+    }
+    .verde{
+      color: green;
+    }
+    .margem2{
+      margin: 40px;
+    }
+    .left{
+      text-align: right;
+    }
+    .titulo-grafico{
+      font-size: 22px;
+    }
+    .btn-collapse{
+      margin: 20px;
+    }
+
 </style>
 
 <div class="container-fluid espaco">
@@ -109,39 +135,99 @@
     <div class="estatistica">
       <h2 class="titulo"> Análise de Dados </h2>
       <p>
+        Nesta seção, apresentamos a análise dos dados coletados, por meio de um forms, durante o desenvolvimento do projeto "PraCegoLer". O objetivo principal deste projeto foi oferecer uma solução que promova a inclusão de pessoas cegas ou com baixa visão, utilizando tecnologia assistiva, como a tradução de textos para Braille com disponibilidade de impressão. Para isso, realizamos uma série de testes com diferentes métodos de coleta de dados, avaliando o tempo de estudos dos estudantes, suas preferências de estudos, sua opinião sobre inclusão e acessibilidade, e a eficácia quanto à experiência dos usuários ao interagir com as ferramentas de acessibilidade. A análise dos dados tem como foco entender como essas tecnologias impactam positivamente no ensino e conhecimento, além de identificar suas necessidades, ajudar no acesso à cultura e aos materiais didáticos.
       </p>
-      <div class="container-fluid">
-        <div class="row margem">
-          <div class="col-md-6">
-            <h3>Explicação do gráfico</h3>
-            <p>Das pessoas que leem muitos livros, 54% também leem muitos artigos. Já entre as pessoas que leem poucos livros, 78% também leem poucos artigos.
-              Hipótese:“Pessoas que se interessam por livros, também se interessam por artigos."
-              Isso sugere que há uma conexão entre o interesse por livros e artigos, indicando que quem gosta de um tipo de leitura tende a gostar do outro.
-            </p>
-          </div>
-          <div class="col-md-6">
-            <img class="grafico" src="public/img/bidimensional1.jpg">
-          </div>
-        </div>
-      </div>
+      
       <div class="row margem">
-        <div class="col-md-6">
-          <img class="grafico" src="public/img/q7.png">
+        <div class="col-6">
+          <div class="container-fluid collapse-container">
+            <h3 class="titulo-grafico">Consumo de Artigos x Consumo de Livros</h3>
+            <img class="grafico" src="public/img/bidimensional1.png" alt="Gráfico Bidimensional 1">
+            <button class="btn btn-primary red btn-collapse" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGraph1" aria-expanded="false" aria-controls="collapseGraph1">
+              Explicação do Gráfico
+            </button>
+            <div class="collapse text-center" id="collapseGraph1">
+              <div class="card card-body collapse-content">
+                O gráfico de colunas empilhadas, demonstra a associação entre duas variáveis. A associação é que das pessoas que leem muitos livros, 54% também leem muitos artigos. Já entre as pessoas que leem poucos livros, 78% também leem poucos artigos. <br>
+                Nossa hipótese foi: “Pessoas que se interessam por livros, também se interessam por artigos.”
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6">
-          <h3>Explicação do gráfico</h3>
-          <p>
-            O gráfico de barras apresenta os resultados da pergunta "O quão você considera que é importante ter um ambiente acessível no meio acadêmico?". Ele está dividido em três categorias representadas por barras coloridas:
-
-            Azul (não visível ou mínimo valor): Menos de 10% das respostas.
-            Vermelho: 8% das respostas consideram acessibilidade de importância média.
-            Amarelo: 10% das respostas indicam uma importância alta, mas não máxima.
-            Verde: 82% das respostas indicam que acessibilidade é considerada de extrema importância no meio acadêmico.
-            O gráfico mostra claramente que a maioria absoluta dos respondentes valoriza muito a acessibilidade no ambiente acadêmico.
-          </p>
+        <div class="col-6">
+          <div class="container-fluid collapse-container">
+            <h3 class="titulo-grafico">Qual a importância de um ambiente acessível no meio acadêmico? (De 1 a 5)</h3>
+            <img class="grafico" src="public/img/q7.png" alt="Gráfico sobre opinião de um ambiente acessível">
+            <button class="btn btn-primary red btn-collapse" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGraph2" aria-expanded="false" aria-controls="collapseGraph2">
+              Explicação do Gráfico
+            </button>
+            <div class="collapse text-center" id="collapseGraph2">
+              <div class="card card-body collapse-content">
+                O gráfico de barras apresenta os resultados da pergunta "O quão você considera que é importante ter um ambiente acessível no meio acadêmico?". Ele está dividido em três categorias representadas por barras coloridas:
+                <ul>
+                  <li>
+                    <span class="azul">Azul</span> (não visível ou mínimo valor): Menos de 10% das respostas.
+                  </li>
+                  <li>
+                    <span class="vermelho">Vermelho</span>: 8% das respostas consideram acessibilidade de importância média.
+                  </li>
+                  <li>
+                    <span class="amarelo">Amarelo</span>: 10% das respostas indicam uma importância alta, mas não máxima.
+                  </li>
+                  <li>
+                    <span class="verde">Verde</span>: 82% das respostas indicam que acessibilidade é considerada de extrema importância no meio acadêmico.
+                  </li>
+                </ul>
+                O gráfico mostra claramente que a maioria absoluta dos respondentes valoriza muito a acessibilidade no ambiente acadêmico.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <button type="button" class="btn btn-dark red"><a href="https://github.com/tech-espm/inter-2sem-2024-pracegoler" class="link"> Link do Repositório do GitHub</a></button>
+      <div class="row margem">
+        <div class="col-6">
+          <div class="container-fluid collapse-container">
+            <h3 class="titulo-grafico"> Os conteúdos acadêmicos adaptados são fáceis de achar?</h3>
+            <img class="grafico" src="public/img/q11.png" alt="Gráfico de radar sobre facilidade de encontrar conteúdos adaptados">
+            <button class="btn btn-primary red btn-collapse" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGraph3" aria-expanded="false" aria-controls="collapseGraph3">
+              Explicação do Gráfico 
+            </button>
+            <div class="collapse text-center" id="collapseGraph3">
+              <div class="card card-body collapse-content">
+                Este gráfico em forma de radar mostra as respostas à pergunta: "Os conteúdos acadêmicos adaptados (livros, textos) são fáceis de achar?". Ele apresenta três opções de resposta: "Sim", "Não" e "Talvez".
+                <ul>
+                  <li>
+                    Sim: Uma pequena quantidade de pessoas respondeu que é fácil encontrar conteúdos adaptados.
+                  </li>
+                  <li>
+                    Não: A maior parte das respostas indica que os conteúdos adaptados não são fáceis de encontrar.
+                  </li>
+                  <li>
+                    Talvez: Um número menor de pessoas respondeu que é "Talvez" fácil encontrar esses conteúdos.
+                  </li>
+                </ul>
+                  O gráfico destaca que a maioria das pessoas encontra dificuldades para acessar conteúdos acadêmicos adaptados. Isso indica a necessidade de melhorar o acesso a esses materiais
+               </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="container-fluid collapse-container">
+            <h3 class="titulo-grafico">Há medidas de acessibilidade no seu ambiente acadêmico? </h3>
+            <img class="grafico" src="public/img/q9.png" alt="Gráfico de pizza sobre acessibilidade">
+            <button class="btn btn-primary red btn-collapse" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGraph4" aria-expanded="false" aria-controls="collapseGraph4">
+              Explicação do Gráfico
+            </button>
+            <div class="collapse text-center" id="collapseGraph4">
+              <div class="card card-body collapse-content">
+                O gráfico de pizza acima é um dado importante para o nosso projeto, pois temos o intuito de diminuir a quantidade de pessoas que responderam não a nossa pesquisa.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-dark red"><a href="https://github.com/tech-espm/inter-2sem-2024-pracegoler" class="link"> Link do Repositório do GitHub</a></button>
+    </div>
 </div>
