@@ -45,6 +45,10 @@
         <p>
             <b>Prefácio:</b> <%= obras[contador].prefacio %>
         </p>
+        <p>
+            <a href="/leitura?id=<%= obras[contador].id %>" class="btn btn-primary">Ler</a>
+            <a href="/editar?id=<%= obras[contador].id %>" class="btn btn-secondary">Editar</a>
+        </p>
         <hr />
     <% } %>
     </div>

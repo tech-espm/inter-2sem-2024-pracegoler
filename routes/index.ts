@@ -111,6 +111,24 @@ class IndexRoute {
 
 		res.render("index/leitura", opcoes);
 	}
+
+	public async editar(req: app.Request, res: app.Response) {
+		let id = parseInt(req.query["id"] as string);
+
+		let obra;
+
+		await app.sql.connect(async (sql) => {
+			let lista = await sql.query("select id, titulo, prefacio, editora, autor, ano, conteudo from obra where id = ?", [id]);
+			obra = lista[0];
+		});
+
+		let opcoes = {
+			titulo: "Editar Obra",
+			obra: obra
+		};
+
+		res.render("index/editar", opcoes);
+	}
 }
 
 export = IndexRoute;

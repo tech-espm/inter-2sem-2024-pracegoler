@@ -1,0 +1,176 @@
+﻿<style>
+	.espaco{
+		padding: 20px 35px;
+		text-align: center;
+	}
+	.imagem{
+		max-width: 150px;
+	}
+	.titulo{
+		font-size: 40px;
+	}
+	.vermelho{
+		color: #c20e35;
+	}
+	.barra{
+		border-radius: 8px;
+		margin: 10px auto;
+	}
+	.descricao{
+		border-radius: 10px;
+		color:  #c20e35;
+		font-weight: bold;
+		padding: 10px;
+		margin: 5px auto 20px;
+	}
+	.form-label{
+		font-weight: lighter;
+		font-style: italic;
+	}
+	.botao{
+		margin: 25px auto;
+		background-color: #c20e35;
+		border-color: #c20e35;
+	}
+	.titulo-dois{
+		font-size: 16px;
+	}
+
+	@media (min-width: 576px) {
+		.titulo{
+			font-size: 55px;
+		}
+	}
+	.red{
+		color: red;
+		font-style: italic;
+	}
+</style>
+
+<div class="container-fluid espaco">
+	
+	<!--
+	<div class="mb-3 barra">
+		<input type="text" class="form-control barra" id="exampleFormControlInput1" placeholder="Pesquisar audiobooks">
+	</div>
+	-->
+	<h1 class="titulo mb-4">
+		<b> Acessibilidade em cada <span class="vermelho">página</span>!</b>
+	</h1>
+	<div class="mb-3">
+		<img src="/public/img/e-book.png" width="200" />
+	</div>
+
+	<hr>
+	<div>
+		<h2>< Contextualização ></h2>
+		<p>
+			No Brasil, pessoas cegas e com baixa visão enfrentam inúmeros desafios de acessibilidade, principalmente no acesso a materiais de leitura adaptados às suas necessidades. Segundo a União Mundial de Cegos, estima-se que apenas 1% a 2% dos livros publicados no mercado editorial brasileiro sejam convertidos para o sistema braille, sendo essa porcentagem ainda mais baixa no âmbito acadêmico.
+		</p>
+	</div>
+	<hr>
+
+	<div class="alert alert-danger" role="alert">
+		<i>Todos os campos abaixo são obrigatórios!</i>
+	</div>
+
+	<input type="hidden" id="inputId" value="<%= obra.id %>">
+
+	<div class="row">
+		<div class="col-md-6">
+			<div class="mb-3">
+				<h2 class="titulo-dois"><label for="inputTitulo" class="form-label"> Título da obra: </label></h2>
+				<input type="text" class="form-control" id="inputTitulo" value="<%= obra.titulo %>">
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="mb-3">
+				<h2 class="titulo-dois"><label for="inputAutor" class="form-label"> Autor da obra: </label></h2>
+				<input type="text" class="form-control" id="inputAutor" value="<%= obra.autor %>">
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="mb-3">
+				<h2 class="titulo-dois"><label for="inputAno" class="form-label"> Ano de publicação da obra: </label></h2>
+				<input type="number" class="form-control" id="inputAno" value="<%= obra.ano %>">
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="mb-3">
+				<h2 class="titulo-dois"><label for="inputEditora" class="form-label"> Editora da obra: </label></h2>
+				<input type="text" class="form-control" id="inputEditora" value="<%= obra.editora %>">
+			</div>
+		</div>
+	</div>
+	<div class="mb-3">
+		<h2 class="titulo-dois"><label for="inputPrefacio" class="form-label">Prefácio da obra:</label></h2>
+		<textarea class="form-control" id="inputPrefacio" rows="3"><%= obra.prefacio %></textarea>
+	</div>
+
+	<h2 class="titulo-dois"><label for="obra" class="form-label">Conteúdo da obra:</label></h2>
+
+	<div id="obra"><%- obra.conteudo %></div>
+
+	<button type="button" class="btn btn-dark botao" onclick="criarObra()"> Criar Obra</button>
+
+</div>
+
+<script type="text/javascript" src="/public/js/ckeditor/ckeditor.js"></script>
+
+<script>
+	CKEDITOR.replace("obra");
+
+	async function criarObra() {
+		let inputTitulo = document.getElementById("inputTitulo");
+		let inputAutor = document.getElementById("inputAutor");
+		let inputAno = document.getElementById("inputAno");
+		let inputEditora = document.getElementById("inputEditora");
+		let inputPrefacio = document.getElementById("inputPrefacio");
+
+		let titulo = inputTitulo.value;
+		let autor = inputAutor.value;
+		let ano = inputAno.value;
+		let editora = inputEditora.value;
+		let prefacio = inputPrefacio.value;
+		let conteudo = CKEDITOR.instances.obra.getData();
+
+		let obra = {
+			titulo: titulo,
+			autor: autor,
+			ano: ano,
+			editora: editora,
+			prefacio: prefacio,
+			conteudo: conteudo
+		};
+
+		try {
+			waitSwal();
+
+			let response = await fetch("/criarObra", {
+				method: "POST",
+				body: JSON.stringify(obra),
+				headers: {
+					"content-type": "application/json"
+				}
+			});
+
+			if (!response.ok) {
+				Swal.fire("Erro", "Ocorreu um erro ao criar a obra", "error");
+				return;
+			}
+
+			inputTitulo.value = "";
+			inputAutor.value = "";
+			inputAno.value = "";
+			inputEditora.value = "";
+			inputPrefacio.value = "";
+			CKEDITOR.instances.obra.setData("");
+
+			Swal.fire("Sucesso!", "Obra criada com sucesso!", "success");
+		} catch (ex) {
+			Swal.fire("Erro", "Ocorreu um erro de rede ao criar a obra: " + ex.message, "error");
+		}
+	}
+</script>

@@ -3,9 +3,16 @@
 </script>
 
 <div class="d-print-none bg-white text-right p-2 mb-3 shadow" style="position: fixed; left: 0; top: 0; width: 100%; z-index: 1;">
-	<button type="button" class="btn btn-sm btn-primary" onclick="window.print()">Imprimir</button>
-	<button type="button" class="btn btn-sm btn-secondary" onclick="alternarFonte()">Alternar Fonte</button>
-	<button type="button" class="btn btn-sm btn-success" onclick="lerEmVozAlta()" id="buttonLer">Ler em Voz Alta</button>
+	<div class="row">
+		<div class="col-sm-6 text-center text-sm-end">
+			<button type="button" class="btn btn-sm btn-primary" onclick="window.print()">Imprimir</button>
+			<button type="button" class="btn btn-sm btn-secondary" onclick="alternarFonte()">Alternar Fonte</button>
+			<button type="button" class="btn btn-sm btn-success" onclick="lerEmVozAlta()" id="buttonLer">Ler em Voz Alta</button>
+		</div>
+		<div class="col-sm-6">
+			<select aria-label="Voz" class="form-select" id="selectVozes"></select>
+		</div>
+	</div>
 </div>
 
 <div class="d-print-none p-2 mb-3">
@@ -87,7 +94,13 @@
 
 </style>
 
+<%- contentFor("espaco-rodape") %>
+
 <script>
+	let lendo = false;
+	let vozes = null;
+	let synth = window.speechSynthesis;
+
 	function alternarFonte() {
 		let pagina = document.getElementById("pagina");
 
@@ -100,7 +113,64 @@
 		//}
 	}
 
+	function listarVozes() {
+		let html = '';
+
+		vozes = synth.getVoices();
+
+		for (let i = 0; i < vozes.length; i++) {
+			html += `<option value="${i}">${vozes[i].name} (${vozes[i].lang})</option>`;
+		}
+
+		let selectVozes = document.getElementById("selectVozes");
+		selectVozes.innerHTML = html;
+	}
+
+	if (synth) {
+		synth.onvoiceschanged = listarVozes;
+		listarVozes();
+	}
+
 	function lerEmVozAlta() {
 		// https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#demo_2
+
+		if (lendo) {
+			return;
+		}
+
+		if (!synth) {
+			Swal.fire("Erro", "Sem suporte! 😢", "error");
+			return;
+		}
+
+		let voz = null;
+		let selectVozes = document.getElementById("selectVozes");
+
+		if (vozes) {
+			let id = parseInt(selectVozes.value);
+			if (id >= 0 && id < vozes.length) {
+				voz = vozes[id];
+			}
+		}
+
+		if (!voz) {
+			Swal.fire("Erro", "Sem voz no idioma pt-BR! 😢", "error");
+			return;
+		}
+
+		let pagina = document.getElementById("pagina");
+
+		const utter = new SpeechSynthesisUtterance(pagina.textContent);
+		utter.voice = voz;
+		utter.onend = function (event) {
+			lendo = false;
+		};
+		utter.onerror = function (event) {
+			lendo = false;
+		};
+
+		lendo = true;
+
+		synth.speak(utter);
 	}
 </script>

@@ -26,26 +26,7 @@
         color: #a0a0a0;
     }
     .box2{
-        padding-top: 200px;
-    
-    }
-    
-    html, body {
-        height: 100vh;
-        margin: 0;
-        overflow: hidden; 
-    }
-    
-    .container-fluid {
-        height: 100%;
-    }
-    
-    .row {
-        height: 100%; 
-    }
-    
-    .col-md-6 {
-        height: 100%; 
+        padding: 1rem;
     }
     
     .btn-contraste{
@@ -88,44 +69,53 @@
         justify-content: center;
         margin-top: 20px;
     }
+	.conteudo {
+		display: flex;
+		flex-direction: column;
+	}
+	.fundo-livro {
+		background-image: url('/public/img/Livro.png');
+		background-position: center bottom;
+		background-size: cover;
+	}
     
 </style>
 
 
-<div class="container-fluid ">
-    <div class="row">
-        <div class="col-md-6 d-flex justify-content-center align-items-center">
-            <img src="public/img/Livro.png" alt="" class="img-fluid">
-        </div>
-        <div class="col-md-6 box2">
-            <h1 class="mb-4">Criar Conta</h1>
-            <div class="d-flex justify-content-between mb-3">
-                <button type="button" class="d-flex align-items-center google-button">
-                    <img src="google-icon-logo-svgrepo-com.svg" alt="" class="me-2"> Usando Conta do Google
-                </button>
-                <button type="button" class="d-flex align-items-center google-button">
-                    <img src="outlook-svgrepo-com.svg" alt="" class="me-2"> Usando Conta do Outlook
-                </button>
-            </div>
-            <h2 class="text-center text-muted my-3">- ou -</h2>
-            <form action="">
-                <div class="mb-3">
-                    <label for="nomeCompleto" class="form-label">Nome Completo</label>
-                    <input type="text" class="form-control" id="nomeCompleto"
-                        placeholder="Digite seu nome completo">
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Digite seu email">
-                </div>
-                <div class="mb-3">
-                    <label for="senha" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="senha" placeholder="Crie uma senha">
-                </div>
-                <div class="btn-sub">
-                    <button type="button" class="submit-btn" onclick="exibirMensagem()">Criar Conta</button>
-                </div>
-            </form>
+<div class="container-fluid d-flex flex-column" style="flex: 1 1 auto;">
+    <div class="row" style="flex: 1 1 auto;">
+        <div class="col-md-6 d-flex justify-content-center align-items-center d-none d-md-flex fundo-livro"></div>
+        <div class="col-md-6 box2 d-flex flex-column justify-content-center">
+			<div>
+				<h1 class="mb-4">Criar Conta</h1>
+				<div class="d-flex justify-content-between mb-3">
+					<button type="button" class="d-flex align-items-center google-button">
+						<img src="google-icon-logo-svgrepo-com.svg" alt="" class="me-2"> Usando Conta do Google
+					</button>
+					<button type="button" class="d-flex align-items-center google-button">
+						<img src="outlook-svgrepo-com.svg" alt="" class="me-2"> Usando Conta do Outlook
+					</button>
+				</div>
+				<h2 class="text-center text-muted my-3">- ou -</h2>
+				<form action="">
+					<div class="mb-3">
+						<label for="nomeCompleto" class="form-label">Nome Completo</label>
+						<input type="text" class="form-control" id="nomeCompleto"
+							placeholder="Digite seu nome completo">
+					</div>
+					<div class="mb-3">
+						<label for="email" class="form-label">Email</label>
+						<input type="email" class="form-control" id="email" placeholder="Digite seu email">
+					</div>
+					<div class="mb-3">
+						<label for="senha" class="form-label">Senha</label>
+						<input type="password" class="form-control" id="senha" placeholder="Crie uma senha">
+					</div>
+					<div class="btn-sub">
+						<button type="button" class="submit-btn" onclick="exibirMensagem()">Criar Conta</button>
+					</div>
+				</form>
+        	</div>
         </div>
     </div>
 </div>
