@@ -122,55 +122,32 @@
 <script>
 	CKEDITOR.replace("obra");
 
-	async function criarObra() {
-		let inputTitulo = document.getElementById("inputTitulo");
-		let inputAutor = document.getElementById("inputAutor");
-		let inputAno = document.getElementById("inputAno");
-		let inputEditora = document.getElementById("inputEditora");
-		let inputPrefacio = document.getElementById("inputPrefacio");
+public async editar(req: app.Request, res: app.Response) {
+    let id = parseInt(req.query["id"] as string);
 
-		let titulo = inputTitulo.value;
-		let autor = inputAutor.value;
-		let ano = inputAno.value;
-		let editora = inputEditora.value;
-		let prefacio = inputPrefacio.value;
-		let conteudo = CKEDITOR.instances.obra.getData();
+    if (isNaN(id)) {
+        res.status(400).send("ID inválido");
+        return;
+    }
 
-		let obra = {
-			titulo: titulo,
-			autor: autor,
-			ano: ano,
-			editora: editora,
-			prefacio: prefacio,
-			conteudo: conteudo
-		};
+    let obra;
 
-		try {
-			waitSwal();
 
-			let response = await fetch("/criarObra", {
-				method: "POST",
-				body: JSON.stringify(obra),
-				headers: {
-					"content-type": "application/json"
-				}
-			});
+    await app.sql.connect(async (sql) => {
+        let lista = await sql.query("select id, titulo, prefacio, editora, autor, ano, conteudo from obra where id = ?", [id]);
+        obra = lista[0];
+    });
 
-			if (!response.ok) {
-				Swal.fire("Erro", "Ocorreu um erro ao criar a obra", "error");
-				return;
-			}
+    if (!obra) {
+        res.status(404).send("Obra não encontrada");
+        return;
+    }
 
-			inputTitulo.value = "";
-			inputAutor.value = "";
-			inputAno.value = "";
-			inputEditora.value = "";
-			inputPrefacio.value = "";
-			CKEDITOR.instances.obra.setData("");
+    let opcoes = {
+        titulo: "Editar Obra",
+        obra: obra
+    };
 
-			Swal.fire("Sucesso!", "Obra criada com sucesso!", "success");
-		} catch (ex) {
-			Swal.fire("Erro", "Ocorreu um erro de rede ao criar a obra: " + ex.message, "error");
-		}
-	}
+    res.render("editar/editar", opcoes);
+}
 </script>
