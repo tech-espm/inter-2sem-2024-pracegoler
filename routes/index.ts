@@ -87,31 +87,10 @@ class IndexRoute {
 		}
 
 		await app.sql.connect(async (sql) => {
-			await sql.query(
-				"insert into obra (titulo, prefacio, editora, autor, ano, conteudo) values (?, ?, ?, ?, ?, ?)",
-				[obra.titulo, obra.prefacio, obra.editora, obra.autor, obra.ano, obra.conteudo]
-			);
+			await sql.query("insert into obra (titulo, prefacio, editora, autor, ano, conteudo) values (?, ?, ?, ?, ?, ?)", [obra.titulo, obra.prefacio, obra.editora, obra.autor, obra.ano, obra.conteudo]);
 		});
 
 		res.json(true);
-	}
-
-	@app.http.get()
-	public async verificarId(req: app.Request, res: app.Response) {
-		const id = parseInt(req.params.id);
-		if (isNaN(id)) {
-			res.status(400).json({ error: "ID inválido" });
-			return;
-		}
-
-		await app.sql.connect(async (sql) => {
-			const resultado = await sql.query("select 1 from obra where id = ?", [id]);
-			if (resultado.length > 0) {
-				res.status(200).json({ valido: true });
-			} else {
-				res.status(404).json({ valido: false });
-			}
-		});
 	}
 
 	@app.http.post()
@@ -153,32 +132,8 @@ class IndexRoute {
 			return;
 		}
 
-		// Verificar se o ID existe no banco de dados
-		let idExiste = false;
 		await app.sql.connect(async (sql) => {
-			const resultado = await sql.query("select 1 from obra where id = ?", [obra.id]);
-			idExiste = resultado.length > 0;
-		});
-
-		if (!idExiste) {
-			res.status(404).json("ID não encontrado. Não é possível editar uma obra inexistente.");
-			return;
-		}
-
-		// Atualizar a obra no banco de dados
-		await app.sql.connect(async (sql) => {
-			await sql.query(
-				"update obra set titulo = ?, prefacio = ?, editora = ?, autor = ?, ano = ?, conteudo = ? where id = ?",
-				[
-					obra.titulo,
-					obra.prefacio,
-					obra.editora,
-					obra.autor,
-					obra.ano,
-					obra.conteudo,
-					obra.id
-				]
-			);
+			await sql.query("update obra set titulo = ?, prefacio = ?, editora = ?, autor = ?, ano = ?, conteudo = ? where id = ?", [obra.titulo, obra.prefacio, obra.editora, obra.autor, obra.ano, obra.conteudo, obra.id]);
 		});
 
 		res.json(true);
@@ -190,10 +145,7 @@ class IndexRoute {
 		let obra;
 
 		await app.sql.connect(async (sql) => {
-			let lista = await sql.query(
-				"select id, titulo, prefacio, editora, autor, ano, conteudo from obra where id = ?",
-				[id]
-			);
+			let lista = await sql.query("select id, titulo, prefacio, editora, autor, ano, conteudo from obra where id = ?", [id]);
 			obra = lista[0];
 		});
 
@@ -212,10 +164,7 @@ class IndexRoute {
 		let obra;
 
 		await app.sql.connect(async (sql) => {
-			let lista = await sql.query(
-				"select id, titulo, prefacio, editora, autor, ano, conteudo from obra where id = ?",
-				[id]
-			);
+			let lista = await sql.query("select id, titulo, prefacio, editora, autor, ano, conteudo from obra where id = ?", [id]);
 			obra = lista[0];
 		});
 
