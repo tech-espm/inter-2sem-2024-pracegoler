@@ -93,6 +93,52 @@ class IndexRoute {
 		res.json(true);
 	}
 
+	@app.http.post()
+	public async editarObra(req: app.Request, res: app.Response) {
+		let obra = req.body;
+
+		if (!obra.id) {
+			res.status(400).json("Id inválido");
+			return;
+		}
+
+		if (!obra.titulo) {
+			res.status(400).json("Título inválido");
+			return;
+		}
+
+		if (!obra.autor) {
+			res.status(400).json("Autor inválido");
+			return;
+		}
+
+		if (!obra.editora) {
+			res.status(400).json("Editora inválida");
+			return;
+		}
+
+		if (!obra.ano) {
+			res.status(400).json("Ano inválido");
+			return;
+		}
+
+		if (!obra.prefacio) {
+			res.status(400).json("Prefácio inválido");
+			return;
+		}
+
+		if (!obra.conteudo) {
+			res.status(400).json("Conteúdo inválido");
+			return;
+		}
+
+		await app.sql.connect(async (sql) => {
+			await sql.query("update obra set titulo = ?, prefacio = ?, editora = ?, autor = ?, ano = ?, conteudo = ? where id = ?", [obra.titulo, obra.prefacio, obra.editora, obra.autor, obra.ano, obra.conteudo, obra.id]);
+		});
+
+		res.json(true);
+	}
+
 	public async leitura(req: app.Request, res: app.Response) {
 		let id = parseInt(req.query["id"] as string);
 

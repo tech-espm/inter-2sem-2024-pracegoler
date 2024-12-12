@@ -113,7 +113,7 @@
 
 	<div id="obra"><%- obra.conteudo %></div>
 
-	<button type="button" class="btn btn-dark botao" onclick="criarObra()"> Criar Obra</button>
+	<button type="button" class="btn btn-dark botao" onclick="editarObra()">Editar Obra</button>
 
 </div>
 
@@ -122,32 +122,51 @@
 <script>
 	CKEDITOR.replace("obra");
 
-public async editar(req: app.Request, res: app.Response) {
-    let id = parseInt(req.query["id"] as string);
+	async function editarObra() {
+		let inputId = document.getElementById("inputId");
+		let inputTitulo = document.getElementById("inputTitulo");
+		let inputAutor = document.getElementById("inputAutor");
+		let inputAno = document.getElementById("inputAno");
+		let inputEditora = document.getElementById("inputEditora");
+		let inputPrefacio = document.getElementById("inputPrefacio");
 
-    if (isNaN(id)) {
-        res.status(400).send("ID inválido");
-        return;
-    }
+		let id = parseInt(inputId.value);
+		let titulo = inputTitulo.value;
+		let autor = inputAutor.value;
+		let ano = parseInt(inputAno.value);
+		let editora = inputEditora.value;
+		let prefacio = inputPrefacio.value;
+		let conteudo = CKEDITOR.instances.obra.getData();
 
-    let obra;
+		let obra = {
+			id: id,
+			titulo: titulo,
+			autor: autor,
+			ano: ano,
+			editora: editora,
+			prefacio: prefacio,
+			conteudo: conteudo
+		};
 
+		try {
+			waitSwal();
 
-    await app.sql.connect(async (sql) => {
-        let lista = await sql.query("select id, titulo, prefacio, editora, autor, ano, conteudo from obra where id = ?", [id]);
-        obra = lista[0];
-    });
+			let response = await fetch("/editarObra", {
+				method: "POST",
+				body: JSON.stringify(obra),
+				headers: {
+					"content-type": "application/json"
+				}
+			});
 
-    if (!obra) {
-        res.status(404).send("Obra não encontrada");
-        return;
-    }
+			if (!response.ok) {
+				Swal.fire("Erro", "Ocorreu um erro ao editar a obra", "error");
+				return;
+			}
 
-    let opcoes = {
-        titulo: "Editar Obra",
-        obra: obra
-    };
-
-    res.render("editar/editar", opcoes);
-}
+			Swal.fire("Sucesso!", "Obra editada com sucesso!", "success");
+		} catch (ex) {
+			Swal.fire("Erro", "Ocorreu um erro de rede ao editar a obra: " + ex.message, "error");
+		}
+	}
 </script>
