@@ -123,50 +123,57 @@
 	CKEDITOR.replace("obra");
 
 	async function editarObra() {
-		let inputId = document.getElementById("inputId");
-		let inputTitulo = document.getElementById("inputTitulo");
-		let inputAutor = document.getElementById("inputAutor");
-		let inputAno = document.getElementById("inputAno");
-		let inputEditora = document.getElementById("inputEditora");
-		let inputPrefacio = document.getElementById("inputPrefacio");
+        let inputId = document.getElementById("inputId");
+        let inputTitulo = document.getElementById("inputTitulo");
+        let inputAutor = document.getElementById("inputAutor");
+        let inputAno = document.getElementById("inputAno");
+        let inputEditora = document.getElementById("inputEditora");
+        let inputPrefacio = document.getElementById("inputPrefacio");
 
-		let id = parseInt(inputId.value);
-		let titulo = inputTitulo.value;
-		let autor = inputAutor.value;
-		let ano = parseInt(inputAno.value);
-		let editora = inputEditora.value;
-		let prefacio = inputPrefacio.value;
-		let conteudo = CKEDITOR.instances.obra.getData();
+        let id = parseInt(inputId.value);
 
-		let obra = {
-			id: id,
-			titulo: titulo,
-			autor: autor,
-			ano: ano,
-			editora: editora,
-			prefacio: prefacio,
-			conteudo: conteudo
-		};
+        try {
+            let verificaIdResponse = await fetch(/verificarId/$id);
+            if (!verificaIdResponse.ok) {
+                Swal.fire("Erro", "O ID fornecido não é válido ou não está cadastrado.", "error");
+                return;
+            }
 
-		try {
-			waitSwal();
+            let titulo = inputTitulo.value;
+            let autor = inputAutor.value;
+            let ano = parseInt(inputAno.value);
+            let editora = inputEditora.value;
+            let prefacio = inputPrefacio.value;
+            let conteudo = CKEDITOR.instances.obra.getData();
 
-			let response = await fetch("/editarObra", {
-				method: "POST",
-				body: JSON.stringify(obra),
-				headers: {
-					"content-type": "application/json"
-				}
-			});
+            let obra = {
+                id: id,
+                titulo: titulo,
+                autor: autor,
+                ano: ano,
+                editora: editora,
+                prefacio: prefacio,
+                conteudo: conteudo
+            };
 
-			if (!response.ok) {
-				Swal.fire("Erro", "Ocorreu um erro ao editar a obra", "error");
-				return;
-			}
+            waitSwal();
 
-			Swal.fire("Sucesso!", "Obra editada com sucesso!", "success");
-		} catch (ex) {
-			Swal.fire("Erro", "Ocorreu um erro de rede ao editar a obra: " + ex.message, "error");
-		}
-	}
+            let response = await fetch("/editarObra", {
+                method: "POST",
+                body: JSON.stringify(obra),
+                headers: {
+                    "content-type": "application/json"
+                }
+            });
+
+            if (!response.ok) {
+                Swal.fire("Erro", "Ocorreu um erro ao editar a obra", "error");
+                return;
+            }
+
+            Swal.fire("Sucesso!", "Obra editada com sucesso!", "success");
+        } catch (ex) {
+            Swal.fire("Erro", "Ocorreu um erro de rede ao editar a obra: " + ex.message, "error");
+        }
+    }
 </script>
