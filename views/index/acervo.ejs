@@ -1,4 +1,7 @@
 <style>
+    .titulo{
+        font-weight: bold;
+    }
     .espaco{
         padding: 20px;
         text-align: center;
@@ -17,6 +20,10 @@
         max-width: 400px;
         margin: 20px auto;
     }
+    .red{
+        background-color: #c20e35;
+        border-color: #c20e35;
+    }
 </style>
 
 <div class="container-fluid espaco">
@@ -26,6 +33,7 @@
     <div class="lista">
         <p>Total de obras já traduzidas: (<%= obras.length %> obras)</p>
 
+        <hr>
     <% for (let contador = 0; contador < obras.length; contador++) { %>
         <h2>
             <%= obras[contador].titulo %>
@@ -46,7 +54,7 @@
             <b>Prefácio:</b> <%= obras[contador].prefacio %>
         </p>
         <p>
-            <a href="/leitura?id=<%= obras[contador].id %>" class="btn btn-primary">Ler</a>
+            <a href="/leitura?id=<%= obras[contador].id %>" class="btn btn-primary red">Ler</a>
             <a href="/editar?id=<%= obras[contador].id %>" class="btn btn-secondary">Editar</a>
         </p>
         <hr />
